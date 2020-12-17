@@ -47,8 +47,8 @@
   "gridUnits": "ft",
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": "power",
-  "url": "https://github.com/ben/foundry-ironsworn",
-  "manifest": "https://raw.githubusercontent.com/ben/foundry-ironsworn/main/system.json",
-  "download": "",
+  "url": "https://github.com/sharak/foundry-ironsworn",
+  "manifest": "https://raw.githubusercontent.com/sharak/foundry-ironsworn/main/system.json",
+  "download": "https://github.com/sharak/foundry-ironsworn/archive/main.zip",
   "license": "LICENSE.txt"
 }
