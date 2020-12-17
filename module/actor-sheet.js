@@ -34,21 +34,16 @@ export class IronswornActorSheet extends ActorSheet {
   getData () {
     const data = super.getData()
 
-    data.movesForDisplay = []
-    for (const moveName of MOVES) {
-      if (moveName.startsWith('---')) {
-        data.movesForDisplay.push({
-          separator: true,
-          title: moveName.substr('--- '.length)
-        })
-      } else {
-        const move = this.actor.items.find(
-          x => x.type === 'move' && x.name === moveName
-        )
-        if (move) data.movesForDisplay.push(move)
+    let movesForDisplay = {}
+    const moves = this.actor.items.filter(item => item.type === 'move');
+    for (const move of moves) {
+      const category = move.data.data.category || "default";
+      if (!movesForDisplay.hasOwnProperty(category)) {
+        movesForDisplay[category] = [];
       }
+      movesForDisplay[category].push(move);
     }
-
+    data.movesForDisplay = movesForDisplay;
     return data
   }
 

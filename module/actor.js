@@ -43,7 +43,7 @@ export class IronswornActor extends Actor {
   }
 
   async addDefaultMoves () {
-    const pack = game.packs.get('foundry-ironsworn.ironswornitems')
+    const pack = game.packs.get('foundry-ironsworn.ironswornmoves')
     const packIndex = await pack.getIndex()
     for (const itemEntry of packIndex) {
       const item = await pack.getEntity(itemEntry._id)

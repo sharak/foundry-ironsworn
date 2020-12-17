@@ -137,25 +137,16 @@
 
             <h1 style="flex: 0 0 auto">moves</h1>
             <div class="flexcol move-list">
-                <ol>
-                    {{#each moveOrder as |key|}}
-                        {{#with (lookup ../moves [key])}}
-                            <li class="move-entry" data-move="{{key}}">
-                                <h3>{{title}}</h3>
-                            </li>
-                        {{/with}}
-                    {{/each}}
-
-                    {{#each movesForDisplay}}
-                        {{#if separator}}
-                            <h2>{{title}}</h2>
-                        {{else}}
+                {{#each movesForDisplay}}
+                    <h3>{{@key}}</h3>
+                    {{#each this as |move|}}
+                        <ol>
                             <li class="move-row" data-id="{{_id}}">
                                 <div class="move-entry">{{name}}</div>
                             </li>
-                        {{/if}}
+                        </ol>
                     {{/each}}
-                </ol>
+                {{/each}}
             </div>
 
             <h1 style="flex: 0 0 auto">oracles</h1>

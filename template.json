@@ -108,6 +108,7 @@
       ]
     },
     "move": {
+      "category": "",
       "description": "When you <strong>do a thing</strong>, (((rollplus iron)))"
     }
   }
