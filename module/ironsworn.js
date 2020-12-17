@@ -142,7 +142,7 @@ Handlebars.registerHelper('ironswornHitType', function () {
 })
 
 export async function ironswornMoveRoll (bonusExpr = '0', values = {}, title) {
-  const r = new Roll(`{d6+${bonusExpr}, d10,d10}`, values).roll()
+  const r = new Roll(`{1d6+${bonusExpr},1d10,1d10}`, values).roll()
   if (true) {
     r.toMessage({ flavor: `<div class="move-title">${title}</div>` })
     return
