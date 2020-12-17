@@ -2,20 +2,20 @@
 
     <!-- Header row -->
     <header class="sheet-header">
-        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="50" width="50" />
-        <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name" /></h1>
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="50" width="50"/>
+        <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
         <div class="xp">
 
         </div>
     </header>
 
     {{#*inline "stack"}}
-    {{#rangeEach from=from to=to current=(lookup data stat)}}
-    <div class="clickable block stack-row {{stat}} {{#if isCurrent}} selected {{/if}}" data-resource="{{stat}}"
-        data-value="{{value}}">
-        {{valueStr}}
-    </div>
-    {{/rangeEach}}
+        {{#rangeEach from=from to=to current=(lookup data stat)}}
+            <div class="clickable block stack-row {{stat}} {{#if isCurrent}} selected {{/if}}" data-resource="{{stat}}"
+                 data-value="{{value}}">
+                {{valueStr}}
+            </div>
+        {{/rangeEach}}
     {{/inline}}
 
     <div class="flexrow">
@@ -23,7 +23,7 @@
             <div class="flexcol stack momentum">
                 <h4 class="vertical">Momentum</h4>
                 {{>stack stat="momentum" from=10 to=-6}}
-                <hr />
+                <hr/>
                 <div class="clickable block stack-row" id="burn">
                     Burn
                 </div>
@@ -48,31 +48,31 @@
         <div class="flexcol">
             <div class="flexrow stats">
                 {{#*inline "stat"}}
-                <div class="stat clickable block" data-stat="{{stat}}">
-                    <h4>{{stat}}</h4>
-                    <h3>{{lookup data stat}}</h3>
-                </div>
+                    <div class="stat clickable block" data-stat="{{stat}}" data-key="{{key}}">
+                        <h4>{{ localize stat }}</h4>
+                        <h3>{{lookup data key}}</h3>
+                    </div>
                 {{/inline}}
 
                 {{#*inline "statEdit"}}
-                <div class="stat block">
-                    <h4>{{stat}}</h4>
-                    <input name="data.{{stat}}" value="{{lookup data stat}}" />
-                </div>
+                    <div class="stat block">
+                        <h4>{{ localize stat }}</h4>
+                        <input name="data.{{key}}" value="{{lookup data key}}"/>
+                    </div>
                 {{/inline}}
 
                 {{#if actor.flags.foundry-ironsworn.editStats}}
-                {{>statEdit stat="edge"}}
-                {{>statEdit stat="heart"}}
-                {{>statEdit stat="iron"}}
-                {{>statEdit stat="shadow"}}
-                {{>statEdit stat="wits"}}
+                    {{>statEdit key="edge" stat="STAT.Edge"}}
+                    {{>statEdit key="heart" stat="STAT.Heart"}}
+                    {{>statEdit key="iron" stat="STAT.Iron"}}
+                    {{>statEdit key="shadow" stat="STAT.Shadow"}}
+                    {{>statEdit key="wits" stat="STAT.Wits"}}
                 {{else}}
-                {{>stat stat="edge"}}
-                {{>stat stat="heart"}}
-                {{>stat stat="iron"}}
-                {{>stat stat="shadow"}}
-                {{>stat stat="wits"}}
+                    {{>stat key="edge" stat="STAT.Edge"}}
+                    {{>stat key="heart" stat="STAT.Heart"}}
+                    {{>stat key="iron" stat="STAT.Iron"}}
+                    {{>stat key="shadow" stat="STAT.Shadow"}}
+                    {{>stat key="wits" stat="STAT.Wits"}}
                 {{/if}}
 
                 <div class="clickable block flexcol edit" id="edit-stats">
@@ -96,11 +96,11 @@
                         <h1 style="text-align:center">Debilities</h1>
 
                         {{#*inline "debility"}}
-                        <label class="checkbox">
-                            <input type="checkbox" name="data.debility.{{name}}"
-                                {{checked (lookup data.debility name)}}>
-                            {{capitalize name}}
-                        </label>
+                            <label class="checkbox">
+                                <input type="checkbox" name="data.debility.{{name}}"
+                                    {{checked (lookup data.debility name)}}>
+                                {{capitalize name}}
+                            </label>
                         {{/inline}}
 
                         <div class="flexrow">
@@ -139,21 +139,21 @@
             <div class="flexcol move-list">
                 <ol>
                     {{#each moveOrder as |key|}}
-                    {{#with (lookup ../moves [key])}}
-                    <li class="move-entry" data-move="{{key}}">
-                        <h3>{{title}}</h3>
-                    </li>
-                    {{/with}}
+                        {{#with (lookup ../moves [key])}}
+                            <li class="move-entry" data-move="{{key}}">
+                                <h3>{{title}}</h3>
+                            </li>
+                        {{/with}}
                     {{/each}}
 
                     {{#each movesForDisplay}}
-                    {{#if separator}}
-                    <h2>{{title}}</h2>
-                    {{else}}
-                    <li class="move-row" data-id="{{_id}}">
-                        <div class="move-entry">{{name}}</div>
-                    </li>
-                    {{/if}}
+                        {{#if separator}}
+                            <h2>{{title}}</h2>
+                        {{else}}
+                            <li class="move-row" data-id="{{_id}}">
+                                <div class="move-entry">{{name}}</div>
+                            </li>
+                        {{/if}}
                     {{/each}}
                 </ol>
             </div>
@@ -162,9 +162,9 @@
             <div class="flexcol move-list">
 
                 {{#*inline "oracle"}}
-                <li class="item">
-                    <h3 class="clickable text move" data-table="Oracle: {{name}}">{{name}}</h3>
-                </li>
+                    <li class="item">
+                        <h3 class="clickable text move" data-table="Oracle: {{name}}">{{name}}</h3>
+                    </li>
                 {{/inline}}
 
                 <ol>

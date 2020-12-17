@@ -72,6 +72,11 @@ Hooks.on('renderIronswornRollDialog', async (dialog, html, data) => {
   html.find('input').focus()
 })
 
+Handlebars.registerHelper('localizeIronsworn', function (value, options) {
+
+  HandlebarsHelpers.localize()
+})
+
 Handlebars.registerHelper('join', function (a, joiner) {
   return a.join(joiner)
 })
@@ -105,10 +110,10 @@ function classesForRoll (r) {
     .join(' ')
 }
 
-const actionRoll = roll => roll.parts[0].rolls.find(r => r.dice[0].faces === 6)
+const actionRoll = roll => roll.terms[0].rolls.find(r => r.dice[0].faces === 6)
 
 const challengeRolls = roll =>
-  roll.parts[0].rolls.filter(r => r.dice[0].faces === 10)
+    roll.terms[0].rolls.filter(r => r.dice[0].faces === 10)
 
 Handlebars.registerHelper('actionDieFormula', function () {
   const r = actionRoll(this.roll)
@@ -131,14 +136,14 @@ Handlebars.registerHelper('ironswornHitType', function () {
   const [challenge1, challenge2] = challengeRolls(this.roll).map(x => x.total)
   const match = challenge1 === challenge2
   if (actionTotal <= Math.min(challenge1, challenge2)) {
-    if (match) return 'Complication!'
-    return 'Miss'
+    if (match) return game.i18n.localize('IRONSWORN.Complication')
+    return game.i18n.localize('IRONSWORN.Miss')
   }
   if (actionTotal > Math.max(challenge1, challenge2)) {
-    if (match) return 'Opportunity!'
-    return 'Strong Hit'
+    if (match) return game.i18n.localize('IRONSWORN.Oportunity');
+    return game.i18n.localize('IRONSWORN.StrongHit');
   }
-  return 'Weak Hit'
+  return game.i18n.localize('IRONSWORN.WeakHit');
 })
 
 export async function ironswornMoveRoll (bonusExpr = '0', values = {}, title) {
@@ -165,21 +170,21 @@ export async function ironswornMoveRoll (bonusExpr = '0', values = {}, title) {
 
 class IronswornRollDialog extends Dialog {}
 
-export async function ironswornRollDialog (data, stat, title) {
+export async function ironswornRollDialog(data, key, stat, title) {
   const template = 'systems/foundry-ironsworn/templates/roll-dialog.hbs'
-  const templateData = { data, stat }
+  const templateData = {data, stat}
   const html = await renderTemplate(template, templateData)
   let d = new IronswornRollDialog({
-    title: title || `Roll +${stat}`,
+    title: title || `${game.i18n.localize('IRONSWORN.Roll')} +${stat}`,
     content: html,
     buttons: {
       roll: {
-        icon: '<i class="fas fa-dice-d10"></i>',
-        label: 'Roll',
+        icon: '<i class="fas fa-dice"></i>',
+        label: game.i18n.localize('IRONSWORN.Roll'),
         callback: x => {
           const form = x[0].querySelector('form')
           const bonus = parseInt(form[0].value, 10)
-          ironswornMoveRoll(`@${stat}+${bonus || 0}`, data, title)
+          ironswornMoveRoll(`@${key}+${bonus || 0}`, data, title)
         }
       }
     },

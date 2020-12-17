@@ -137,17 +137,18 @@ export class IronswornActorSheet extends ActorSheet {
     event.preventDefault()
     const el = event.currentTarget
 
-    const stat = el.dataset.stat
+    const stat = game.i18n.localize(el.dataset.stat);
+    const key = el.dataset.key;
     if (stat) {
       // Clicked a non-edit stat; trigger a roll
-      ironswornRollDialog(this.actor.data.data, stat, `Roll +${stat}`)
+      ironswornRollDialog(this.actor.data.data, key, stat, `${game.i18n.localize('IRONSWORN.Roll')} +${stat}`)
     }
 
     const resource = el.dataset.resource
     if (resource) {
       // Clicked a value in momentum/health/etc, set the value
       const newValue = parseInt(el.dataset.value)
-      const { momentumMax } = this.actor.data.data
+      const {momentumMax} = this.actor.data.data
       if (newValue <= momentumMax) {
         await this.actor.update({ data: { [resource]: newValue } })
       }
