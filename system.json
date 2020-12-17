@@ -60,7 +60,7 @@
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": "power",
   "url": "https://github.com/sharak/foundry-ironsworn",
-  "manifest": "https://raw.githubusercontent.com/sharak/foundry-ironsworn/main/system.json",
-  "download": "https://github.com/sharak/foundry-ironsworn/archive/main.zip",
+  "manifest": "https://raw.githubusercontent.com/sharak/foundry-ironsworn/develop/system.json",
+  "download": "https://github.com/sharak/foundry-ironsworn/archive/develop.zip",
   "license": "LICENSE.txt"
 }
