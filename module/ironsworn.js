@@ -5,10 +5,11 @@
  */
 
 // Import Modules
-import { IronswornActor } from './actor.js'
-import { IronswornItemSheet } from './item-sheet.js'
-import { IronswornActorSheet } from './actor-sheet.js'
-import { IronswornParser } from "./parser.js";
+import {IronswornActor} from './actor.js'
+import {IronswornItemSheet} from './item-sheet.js'
+import {IronswornActorSheet} from './actor-sheet.js'
+import {IronswornParser} from "./parser.js";
+import {getAttributeNames} from "./utils.js";
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -115,7 +116,7 @@ const challengeRolls = roll =>
 
 Handlebars.registerHelper('actionDieFormula', function () {
   const r = actionRoll(this.roll)
-  const parts = [...r.parts]
+  const parts = [...r.terms]
   const d = parts.shift()
   const classes = classesForRoll(r)
 
@@ -168,12 +169,12 @@ export async function ironswornMoveRoll (bonusExpr = '0', values = {}, title) {
 
 class IronswornRollDialog extends Dialog {}
 
-export async function ironswornRollDialog(data, key, stat, title) {
+export async function ironswornRollDialog(data, stat, title) {
   const template = 'systems/foundry-ironsworn/templates/roll-dialog.hbs'
-  const templateData = {data, stat}
+  const templateData = {data, stat: getAttributeNames(stat)}
   const html = await renderTemplate(template, templateData)
   let d = new IronswornRollDialog({
-    title: title || `${game.i18n.localize('IRONSWORN.Roll')} +${stat}`,
+    title: title || `${game.i18n.localize('IRONSWORN.Roll')} +${getAttributeNames(stat)}`,
     content: html,
     buttons: {
       roll: {
@@ -182,7 +183,7 @@ export async function ironswornRollDialog(data, key, stat, title) {
         callback: x => {
           const form = x[0].querySelector('form')
           const bonus = parseInt(form[0].value, 10)
-          ironswornMoveRoll(`@${key}+${bonus || 0}`, data, title)
+          ironswornMoveRoll(`@${stat}+${bonus || 0}`, data, title)
         }
       }
     },
