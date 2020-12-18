@@ -33,15 +33,15 @@
         </div>
         <div class="flexcol margin-left">
             <div class="flexcol stack health">
-                <h4 class="vertical clickable text" data-stat="health">Health</h4>
+                <h4 class="vertical clickable text" data-stat="health">{{ localize 'STAT.Health' }}</h4>
                 {{>stack stat="health" from=5 to=0}}
             </div>
             <div class="flexcol stack spirit">
-                <h4 class="vertical clickable text" data-stat="spirit">Spirit</h4>
+                <h4 class="vertical clickable text" data-stat="spirit">{{ localize 'STAT.Spirit' }}</h4>
                 {{>stack stat="spirit" from=5 to=0}}
             </div>
             <div class="flexcol stack supply">
-                <h4 class="vertical clickable text" data-stat="supply">Supply</h4>
+                <h4 class="vertical clickable text" data-stat="supply">{{ localize 'STAT.Supply' }}</h4>
                 {{>stack stat="supply" from=5 to=0}}
             </div>
         </div>

@@ -12,6 +12,12 @@ export function getAttributeNames(attr) {
             return game.i18n.localize('STAT.Shadow');
         case 'wits':
             return game.i18n.localize('STAT.Wits');
+        case 'health':
+            return game.i18n.localize('STAT.Health');
+        case 'spirit':
+            return game.i18n.localize('STAT.Spirit');
+        case 'supply':
+            return game.i18n.localize('STAT.Supply');
         default:
             return null;
     }
