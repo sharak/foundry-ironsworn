@@ -25,13 +25,11 @@
 .ironsworn .sheet-area h3 {
   border: none;
 }
-
 .ironsworn.sheet input[type='text'],
 .ironsworn.sheet input[type='number'] {
   background: none;
   border-color: transparent;
 }
-
 .ironsworn.sheet.item header.sheet-header h1 input {
   margin-right: 0;
 }
