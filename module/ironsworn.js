@@ -8,6 +8,7 @@
 import { IronswornActor } from './actor.js'
 import { IronswornItemSheet } from './item-sheet.js'
 import { IronswornActorSheet } from './actor-sheet.js'
+import { IronswornParser } from "./parser.js";
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -72,10 +73,7 @@ Hooks.on('renderIronswornRollDialog', async (dialog, html, data) => {
   html.find('input').focus()
 })
 
-Handlebars.registerHelper('localizeIronsworn', function (value, options) {
-
-  HandlebarsHelpers.localize()
-})
+Hooks.on('renderItemSheet', IronswornParser.ParseSheetContent)
 
 Handlebars.registerHelper('join', function (a, joiner) {
   return a.join(joiner)
