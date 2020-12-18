@@ -25,15 +25,17 @@
     }
   }
 
+
   &.sheet {
+    input[type='text'], input[type='number'] {
+      background: none;
+      border-color: transparent;
+    }
+
     &.item {
       header.sheet-header {
-        flex-direction: column;
-        align-items: stretch;
-
         h1 input {
-          margin: 0 0 .5rem;
-          width: 100%
+          margin-right: 0;
         }
       }
     }

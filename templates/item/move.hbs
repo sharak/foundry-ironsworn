@@ -1,25 +1,29 @@
 <form class="{{cssClass}}" autocomplete="off">
     {{!-- Sheet Body --}}
     <section class="sheet-body flexcol">
-        <header class="sheet-header">
-            <h1>
-                <input name="name" type="text" value="{{item.name}}" placeholder="Name"/>
-            </h1>
-            <div class="move-categories form-group stacked">
-                <label>{{ localize 'IRONSWORN.MoveTypes' }}</label>
-                <select class="move-category" name="data.category">
-                    {{#select data.category}}
-                        <option value="">---</option>
-                        <option value="adventure">{{ localize 'MOVE_TYPES.Adventure' }}</option>
-                        <option value="relationship">{{ localize 'MOVE_TYPES.Relationship' }}</option>
-                        <option value="combat">{{ localize 'MOVE_TYPES.Combat' }}</option>
-                        <option value="suffer">{{ localize 'MOVE_TYPES.Suffer' }}</option>
-                        <option value="quest">{{ localize 'MOVE_TYPES.Quest' }}</option>
-                        <option value="fate">{{ localize 'MOVE_TYPES.Fate' }}</option>
-                    {{/select}}
-                </select>
+        <header class="sheet-header flexrow" style="flex: 0 0 64px;">
+            <img class="profile" src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
+            <div class="header-details flexcol">
+                <h1>
+                    <input name="name" type="text" value="{{item.name}}" placeholder="Name"/>
+                </h1>
             </div>
+
         </header>
+        <div class="move-categories form-group stacked" style="flex: 0 0">
+            <label>{{ localize 'IRONSWORN.MoveTypes' }}</label>
+            <select class="move-category" name="data.category">
+                {{#select data.category}}
+                    <option value="">---</option>
+                    <option value="adventure">{{ localize 'MOVE_TYPES.Adventure' }}</option>
+                    <option value="relationship">{{ localize 'MOVE_TYPES.Relationship' }}</option>
+                    <option value="combat">{{ localize 'MOVE_TYPES.Combat' }}</option>
+                    <option value="suffer">{{ localize 'MOVE_TYPES.Suffer' }}</option>
+                    <option value="quest">{{ localize 'MOVE_TYPES.Quest' }}</option>
+                    <option value="fate">{{ localize 'MOVE_TYPES.Fate' }}</option>
+                {{/select}}
+            </select>
+        </div st>
         {{editor content=data.description target="data.description" button=true owner=owner editable=true}}
     </section>
 </form>
