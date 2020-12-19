@@ -1,6 +1,6 @@
-import {ironswornRollDialog} from './ironsworn.js'
-import {IronswornParser} from "./parser.js";
-import {getAttributeNames} from "./utils.js";
+import {ironswornRollDialog} from '../ironsworn.js'
+import {IronswornParser} from "../parser.js";
+import {getAttributeNames} from "../utils.js";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -35,6 +35,27 @@ export class IronswornActorSheet extends ActorSheet {
     /** @override */
     getData() {
         const data = super.getData()
+
+        data.vows = [
+            {
+                id: "sdafasre",
+                name: "Encontrar a mi hermana",
+                level: 1,
+                marks: 2,
+            },
+            {
+                id: "sdfagaewf",
+                name: "Guiar la caravana de forma segura a través de los Bosques de Luto",
+                level: 4,
+                marks: 4,
+            },
+            {
+                id: "afstergdf",
+                name: "Matar a la wyverna",
+                level: 8,
+                marks: 16,
+            }
+        ];
 
         let movesForDisplay = {}
         const moves = this.actor.items.filter(item => item.type === 'move');

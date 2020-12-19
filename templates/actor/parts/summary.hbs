@@ -1,5 +1,5 @@
 {{#*inline "progress"}}
-    <button type="button" class="mark-progress">{{ localize 'IRONSWORN.Mark' }}</button>
+    <button type="button" class="mark-progress" data-marks="{{ level }}">{{ localize 'IRONSWORN.Mark' }}</button>
     {{#rangeProgress from=from to=to marks=marks}}
         <div class="sheet-progress-input {{cls}}">
             <span class="mark">|</span>
@@ -14,18 +14,15 @@
     <div class="flexcol">
         <section class="sheet-area">
             <h1>{{ localize 'IRONSWORN.Vows' }}</h1>
-            <h3 class="sheet-progress-title">
-                <a class="progress-fulfill">Guiar la caravana de forma segura a través de lios Bosques de Luto (FORMIDABLE)</a>
-            </h3>
-            <div class="flexrow sheet-progress">
-                {{>progress marks="3" from=1 to=10}}
-            </div>
-            <h3 class="vow-title">
-                <a class="progress-fulfill">Matar a la wyverna (PELIGROSO)</a>
-            </h3>
-            <div class="flexrow sheet-progress">
-                {{>progress marks="16" from=1 to=10}}
-            </div>
+            {{#each vows as |vow id|}}
+                <h3 class="sheet-progress-title">
+                    <a class="progress-fulfill">{{ vow.name }} ({{ localizeDifficulty vow.level }})</a>
+                </h3>
+                <div class="flexrow sheet-progress">
+                    {{>progress marks=vow.marks level=vow.level from=1 to=10}}
+                </div>
+            {{/each}}
+            <button type="button" class="add-item" data-type="vow">{{ localize 'IRONSWORN.AddVow' }}</button>
         </section>
     </div>
 </div>

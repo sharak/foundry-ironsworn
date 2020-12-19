@@ -5,11 +5,11 @@
  */
 
 // Import Modules
-import {IronswornActor} from './actor.js'
+import {IronswornActor} from './actors/actor.js'
 import {IronswornItemSheet} from './item-sheet.js'
-import {IronswornActorSheet} from './actor-sheet.js'
+import {IronswornActorSheet} from './actors/actor-sheet.js'
 import {IronswornParser} from "./parser.js";
-import {getAttributeNames} from "./utils.js";
+import {getAttributeNames, getDifficultyNames} from "./utils.js";
 import {preloadTemplates} from "./templates.js";
 
 /* -------------------------------------------- */
@@ -98,7 +98,9 @@ Handlebars.registerHelper('ifIsIronswornRoll', function (options) {
         return options.inverse(this)
     }
 })
-
+Handlebars.registerHelper('localizeDifficulty', function (value) {
+    return getDifficultyNames(value);
+})
 function classesForRoll(r) {
     const d = r.dice[0]
     const maxRoll = d.faces

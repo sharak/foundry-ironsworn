@@ -22,3 +22,20 @@ export function getAttributeNames(attr) {
             return null;
     }
 }
+
+export function getDifficultyNames(level) {
+    debugger;
+    switch (level) {
+        case 1:
+            return game.i18n.localize('DIFFICULTY.Epic');
+        case 2:
+            return game.i18n.localize('DIFFICULTY.Extreme');
+        case 4:
+            return game.i18n.localize('DIFFICULTY.Formidable');
+        case 8:
+            return game.i18n.localize('DIFFICULTY.Dangerous');
+        case 12:
+            return game.i18n.localize('DIFFICULTY.Troublesome');
+
+    }
+}
