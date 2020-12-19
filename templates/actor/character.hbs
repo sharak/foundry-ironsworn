@@ -21,7 +21,7 @@
     <div class="flexrow">
         <div class="flexcol margin-left">
             <div class="flexcol stack momentum">
-                <h4 class="vertical">Momentum</h4>
+                <h4 class="vertical">{{ localize 'STAT.Momentum' }}</h4>
                 {{>stack stat="momentum" from=10 to=-6}}
                 <hr/>
                 <div class="clickable block stack-row" id="burn">
@@ -31,7 +31,32 @@
                 Max: {{data.momentumMax}}
             </div>
         </div>
-        <div class="flexcol margin-left">
+        <div class="flexcol">
+            {{> "systems/foundry-ironsworn/templates/actor/parts/main-stats.hbs" }}
+            <nav class="sheet-tabs tabs" data-group="primary">
+                <a class="item" data-tab="summary">{{ localize 'TABS.Summary' }}</a>
+                <a class="item" data-tab="assets">{{ localize 'TABS.Assets' }}</a>
+                <a class="item" data-tab="moves">{{ localize 'IRONSWORN.Moves' }}</a>
+                <a class="item" data-tab="oracles">{{ localize 'IRONSWORN.Oracles' }}</a>
+            </nav>
+            <div class="sheet-main">
+                <div class="tab summary" data-group="primary" data-tab="summary">
+                    {{> "systems/foundry-ironsworn/templates/actor/parts/summary.hbs" }}
+                </div>
+
+                <div class="tab assets" data-group="primary" data-tab="assets">
+                    {{> "systems/foundry-ironsworn/templates/actor/parts/assets.hbs" }}
+                </div>
+                <div class="tab moves" data-group="primary" data-tab="moves">
+                    {{> "systems/foundry-ironsworn/templates/actor/parts/moves.hbs" }}
+                </div>
+                <div class="tab oracles" data-group="primary" data-tab="oracles">
+                    {{> "systems/foundry-ironsworn/templates/actor/parts/oracles.hbs" }}
+                </div>
+            </div>
+
+        </div>
+        <div class="flexcol margin-right">
             <div class="flexcol stack health">
                 <h4 class="vertical clickable text" data-stat="health">{{ localize 'STAT.Health' }}</h4>
                 {{>stack stat="health" from=5 to=0}}
@@ -43,164 +68,6 @@
             <div class="flexcol stack supply">
                 <h4 class="vertical clickable text" data-stat="supply">{{ localize 'STAT.Supply' }}</h4>
                 {{>stack stat="supply" from=5 to=0}}
-            </div>
-        </div>
-        <div class="flexcol">
-            <div class="flexrow stats">
-                {{#*inline "stat"}}
-                    <div class="stat clickable block" data-stat="{{key}}">
-                        <h4>{{ localize stat }}</h4>
-                        <h3>{{lookup data key}}</h3>
-                    </div>
-                {{/inline}}
-
-                {{#*inline "statEdit"}}
-                    <div class="stat block">
-                        <h4>{{ localize stat }}</h4>
-                        <input name="data.{{key}}" value="{{lookup data key}}"/>
-                    </div>
-                {{/inline}}
-
-                {{#if actor.flags.foundry-ironsworn.editStats}}
-                    {{>statEdit key="edge" stat="STAT.Edge"}}
-                    {{>statEdit key="heart" stat="STAT.Heart"}}
-                    {{>statEdit key="iron" stat="STAT.Iron"}}
-                    {{>statEdit key="shadow" stat="STAT.Shadow"}}
-                    {{>statEdit key="wits" stat="STAT.Wits"}}
-                {{else}}
-                    {{>stat key="edge" stat="STAT.Edge"}}
-                    {{>stat key="heart" stat="STAT.Heart"}}
-                    {{>stat key="iron" stat="STAT.Iron"}}
-                    {{>stat key="shadow" stat="STAT.Shadow"}}
-                    {{>stat key="wits" stat="STAT.Wits"}}
-                {{/if}}
-
-                <div class="clickable block flexcol edit" id="edit-stats">
-                    <p class="flexrow" style="align-items: center; padding-left: 4px;">
-                        <i class="fas fa-edit"></i>
-                    </p>
-                </div>
-            </div>
-
-            <div class="flexrow">
-
-                <div class="flexcol">
-                    <section class="sheet-area">
-                        <h1 style="text-align:center">Assets</h1>
-                    </section>
-                    <section class="sheet-area">
-                        <h1 style="text-align:center">Bonds</h1>
-                    </section>
-
-                    <section class="sheet-area">
-                        <h1 style="text-align:center">Debilities</h1>
-
-                        {{#*inline "debility"}}
-                            <label class="checkbox">
-                                <input type="checkbox" name="data.debility.{{name}}"
-                                    {{checked (lookup data.debility name)}}>
-                                {{capitalize name}}
-                            </label>
-                        {{/inline}}
-
-                        <div class="flexrow">
-                            <div class="flexcol">
-                                <h3>Conditions</h3>
-                                {{>debility name="wounded"}}
-                                {{>debility name="unprepared"}}
-                                {{>debility name="shaken"}}
-                                {{>debility name="encumbered"}}
-                            </div>
-                            <div class="flexcol">
-                                <h3>Banes</h3>
-                                {{>debility name="maimed"}}
-                                {{>debility name="corrupted"}}
-
-                                <h3>Burdens</h3>
-                                {{>debility name="cursed"}}
-                                {{>debility name="tormented"}}
-                            </div>
-                        </div>
-                    </section>
-
-                </div>
-
-                <div class="flexcol">
-                    <h1 style="text-align:center">Vows</h1>
-                    <h1 style="text-align:center">Progress</h1>
-                    <h1 style="text-align:center">Sites</h1>
-                </div>
-
-            </div>
-        </div>
-        <div class="flexcol margin-right">
-
-            <h1 style="flex: 0 0 auto">moves</h1>
-            <div class="flexcol move-list">
-                {{#each movesForDisplay}}
-                    <h3>{{@key}}</h3>
-                    {{#each this as |move|}}
-                        <ol>
-                            <li class="move-row" data-id="{{_id}}">
-                                <div class="move-entry">{{name}}</div>
-                            </li>
-                        </ol>
-                    {{/each}}
-                {{/each}}
-            </div>
-
-            <h1 style="flex: 0 0 auto">oracles</h1>
-            <div class="flexcol move-list">
-
-                {{#*inline "oracle"}}
-                    <li class="item">
-                        <h3 class="clickable text move" data-table="Oracle: {{name}}">{{name}}</h3>
-                    </li>
-                {{/inline}}
-
-                <ol>
-                    <h2>Plot</h2>
-                    {{> oracle name="Action"}}
-                    {{> oracle name="Theme"}}
-                    {{> oracle name="Combat Action"}}
-                    {{> oracle name="Settlement Trouble"}}
-                    {{> oracle name="Major Plot Twist"}}
-                    {{> oracle name="Mystic Backlash"}}
-                    {{> oracle name="Challenge Rank"}}
-                    <h2>Location</h2>
-                    {{> oracle name="Region"}}
-                    {{> oracle name="Location"}}
-                    {{> oracle name="Coastal Waters Location"}}
-                    {{> oracle name="Location Descriptor"}}
-                    {{> oracle name="Settlement Name"}}
-                    {{> oracle name="Settlement Name (Landscape Feature)"}}
-                    {{> oracle name="Settlement Name (Manmade Edifice)"}}
-                    {{> oracle name="Settlement Name (Creature)"}}
-                    {{> oracle name="Settlement Name (Historical Event)"}}
-                    {{> oracle name="Settlement Name (Old Language)"}}
-                    {{> oracle name="Settlement Name (Season or Environmental Aspect)"}}
-                    {{> oracle name="Settlement Name (Something Else)"}}
-                    {{> oracle name="Quick Settlement Name (Prefix)"}}
-                    {{> oracle name="Quick Settlement Name (Suffix)"}}
-                    <h2>Character</h2>
-                    {{> oracle name="Character Role"}}
-                    {{> oracle name="Character Goal"}}
-                    {{> oracle name="Character Descriptor"}}
-                    {{> oracle name="Character Disposition"}}
-                    <h2>Names</h2>
-                    {{> oracle name="Ironlander Names"}}
-                    {{> oracle name="Elf Names"}}
-                    {{> oracle name="Giant Names"}}
-                    {{> oracle name="Varou Names"}}
-                    {{> oracle name="Troll Names"}}
-                    <h2>Moves</h2>
-                    {{> oracle name="Choice (Almost Certain)"}}
-                    {{> oracle name="Choice (Likely)"}}
-                    {{> oracle name="Choice (50/50)"}}
-                    {{> oracle name="Choice (Unlikely)"}}
-                    {{> oracle name="Choice (Small Chance)"}}
-                    <!-- TODO: Delve oracles? -->
-                </ol>
             </div>
         </div>
     </div>

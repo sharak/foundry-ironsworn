@@ -1,0 +1,35 @@
+<div class="flexrow stats">
+    {{#*inline "stat"}}
+        <div class="stat clickable block" data-stat="{{key}}">
+            <h4>{{ localize stat }}</h4>
+            <h3>{{lookup data key}}</h3>
+        </div>
+    {{/inline}}
+
+    {{#*inline "statEdit"}}
+        <div class="stat block">
+            <h4>{{ localize stat }}</h4>
+            <input name="data.{{key}}" value="{{lookup data key}}"/>
+        </div>
+    {{/inline}}
+
+    {{#if actor.flags.foundry-ironsworn.editStats}}
+        {{>statEdit key="edge" stat="STAT.Edge"}}
+        {{>statEdit key="heart" stat="STAT.Heart"}}
+        {{>statEdit key="iron" stat="STAT.Iron"}}
+        {{>statEdit key="shadow" stat="STAT.Shadow"}}
+        {{>statEdit key="wits" stat="STAT.Wits"}}
+    {{else}}
+        {{>stat key="edge" stat="STAT.Edge"}}
+        {{>stat key="heart" stat="STAT.Heart"}}
+        {{>stat key="iron" stat="STAT.Iron"}}
+        {{>stat key="shadow" stat="STAT.Shadow"}}
+        {{>stat key="wits" stat="STAT.Wits"}}
+    {{/if}}
+
+    <div class="clickable block flexcol edit" id="edit-stats">
+        <p class="flexrow" style="align-items: center; padding-left: 4px;">
+            <i class="fas fa-edit"></i>
+        </p>
+    </div>
+</div>

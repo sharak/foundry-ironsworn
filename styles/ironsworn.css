@@ -1,3 +1,24 @@
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v15/JTURjIg1_i6t8kCHKm45_cJD7g4.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v15/JTUSjIg1_i6t8kCHKm45xW4.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v15/JTURjIg1_i6t8kCHKm45_ZpC7g4.ttf) format('truetype');
+}
 .ironsworn {
   /* Sheet Tabs */
   /* Items List */
@@ -18,12 +39,93 @@
   overflow-y: scroll;
 }
 .ironsworn .sheet-area {
-  border-top: 2px solid darkgray;
+  margin-top: 0.5rem;
 }
 .ironsworn .sheet-area h1,
 .ironsworn .sheet-area h2,
 .ironsworn .sheet-area h3 {
   border: none;
+}
+.ironsworn .sheet-area h1 {
+  text-align: right;
+  font-weight: 500;
+  border-bottom: 2px solid #CCCCCC;
+  margin-bottom: 1rem;
+}
+.ironsworn.sheet {
+  font-family: 'Montserrat';
+}
+.ironsworn.sheet .sheet-progress {
+  border-bottom: 1px solid #CCCCCC;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.ironsworn.sheet .sheet-progress > * {
+  flex: 0 0;
+}
+.ironsworn.sheet .sheet-progress-input {
+  min-width: 40px;
+  width: 40px;
+  height: 40px;
+  padding: 2px;
+  border: 2px solid #4c4d4f;
+  margin-right: 4px;
+  position: relative;
+}
+.ironsworn.sheet .sheet-progress-input.mark-1 .mark:nth-child(1) {
+  display: block;
+}
+.ironsworn.sheet .sheet-progress-input.mark-2 .mark:nth-child(1) {
+  display: block;
+}
+.ironsworn.sheet .sheet-progress-input.mark-2 .mark:nth-child(2) {
+  display: block;
+}
+.ironsworn.sheet .sheet-progress-input.mark-3 .mark:nth-child(1) {
+  display: block;
+}
+.ironsworn.sheet .sheet-progress-input.mark-3 .mark:nth-child(2) {
+  display: block;
+}
+.ironsworn.sheet .sheet-progress-input.mark-3 .mark:nth-child(3) {
+  display: block;
+}
+.ironsworn.sheet .sheet-progress-input.mark-4 {
+  background: #CCC;
+}
+.ironsworn.sheet .sheet-progress-input.mark-4 .mark:nth-child(1) {
+  display: block;
+}
+.ironsworn.sheet .sheet-progress-input.mark-4 .mark:nth-child(2) {
+  display: block;
+}
+.ironsworn.sheet .sheet-progress-input.mark-4 .mark:nth-child(3) {
+  display: block;
+}
+.ironsworn.sheet .sheet-progress-input.mark-4 .mark:nth-child(4) {
+  display: block;
+}
+.ironsworn.sheet .sheet-progress-input .mark {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 34px;
+  height: 34px;
+  text-align: center;
+  content: "|";
+  line-height: 32px;
+  font-size: 22px;
+  transform: rotate(-45deg);
+  display: none;
+}
+.ironsworn.sheet .sheet-progress-input .mark:nth-child(2) {
+  transform: rotate(45deg);
+}
+.ironsworn.sheet .sheet-progress-input .mark:nth-child(3) {
+  transform: rotate(90deg);
+}
+.ironsworn.sheet .sheet-progress-input .mark:nth-child(4) {
+  transform: rotate(180deg);
 }
 .ironsworn.sheet input[type='text'],
 .ironsworn.sheet input[type='number'] {
@@ -74,11 +176,15 @@
   position: relative;
 }
 .ironsworn .margin-right {
-  flex: 0 0 250px;
+  flex: 0;
   border-left: 1px solid black;
   margin-left: 5px;
-  padding-left: 10px;
+  padding-left: 5px;
+  padding-right: 25px;
   position: relative;
+}
+.ironsworn .margin-right h4.vertical {
+  left: 83px !important;
 }
 .ironsworn h4 {
   font-size: 22px;

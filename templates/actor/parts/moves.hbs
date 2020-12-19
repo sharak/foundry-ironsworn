@@ -1,0 +1,16 @@
+<div class="flexcol">
+
+    <h1 style="flex: 0 0 auto">{{ localize 'IRONSWORN.Moves' }}</h1>
+    <div class="flexcol move-list">
+        {{#each movesForDisplay}}
+            <h3>{{@key}}</h3>
+            {{#each this as |move|}}
+                <ol>
+                    <li class="move-row" data-id="{{_id}}">
+                        <div class="move-entry">{{name}}</div>
+                    </li>
+                </ol>
+            {{/each}}
+        {{/each}}
+    </div>
+</div>

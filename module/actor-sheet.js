@@ -11,13 +11,13 @@ export class IronswornActorSheet extends ActorSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             classes: ['ironsworn', 'sheet', 'actor'],
-            width: 1200,
+            width: 800,
             height: 800,
             tabs: [
                 {
                     navSelector: '.sheet-tabs',
-                    contentSelector: '.sheet-body',
-                    initial: 'description'
+                    contentSelector: '.sheet-main',
+                    initial: 'summary'
                 }
             ],
             dragDrop: [{dragSelector: '.item-list .item', dropSelector: null}]

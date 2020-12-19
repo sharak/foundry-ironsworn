@@ -7,6 +7,13 @@
   "STAT.Health": "Health",
   "STAT.Spirit": "Spirit",
   "STAT.Supply": "Supply",
+  "STAT.Momentum": "Momentum",
+
+  "TABS.Summary": "Summary",
+  "TABS.Assets": "Assets",
+
+  "IRONSWORN.Oracles": "Oracles",
+  "IRONSWORN.Moves": "Moves",
   "IRONSWORN.Rolling": "Rolling",
   "IRONSWORN.Roll": "Roll",
   "IRONSWORN.Bonus": "Bonus",
@@ -17,6 +24,8 @@
   "IRONSWORN.WeakHit": "Weak Hit",
   "IRONSWORN.StrongHit": "Strong Hit",
   "IRONSWORN.MoveTypes": "Move Types",
+  "IRONSWORN.Vows": "Vows",
+  "IRONSWORN.Mark": "Mark",
   "MOVE_TYPES.Adventure": "Adventure",
   "MOVE_TYPES.Fate": "Fate",
   "MOVE_TYPES.Combat": "Combat",
