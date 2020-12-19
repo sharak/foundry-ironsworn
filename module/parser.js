@@ -1,5 +1,5 @@
-import { ironswornMoveRoll } from "./ironsworn.js";
-import { getAttributeNames } from "./utils.js";
+import {ironswornMoveRoll} from "./ironsworn.js";
+import {getAttributeNames} from "./utils.js";
 
 export class IronswornParser {
     static ParseSheetContent(app, html, data) {
@@ -61,13 +61,18 @@ export class IronswornParser {
                 break;
         }
 
+        if (!name) {
+            data.name = linktext
+        }
+
         const a = document.createElement('a');
         a.title = linktext;
         a.classList.add(...data.cls);
         for (let [k, v] of Object.entries(data.dataset)) {
             a.dataset[k] = v;
         }
-        a.innerHTML = `<i data-link-icon="${data.icon}" class="link-icon ${data.icon}"></i> ${linktext}`;
+
+        a.innerHTML = `<i data-link-icon="${data.icon}" class="link-icon ${data.icon}"></i> ${data.name}`;
 
         return a;
     }
