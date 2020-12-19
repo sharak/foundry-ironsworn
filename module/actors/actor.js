@@ -50,6 +50,14 @@ export class IronswornActor extends Actor {
             if (item.type === 'move') await this.createOwnedItem(item)
         }
     }
+
+    async createEmptyVow(ev) {
+        const data = {
+            name: game.i18n.localize('IRONSWORN.NewVow'),
+            type: "vow",
+        }
+        return await this.createOwnedItem(data, {renderSheet: true});
+    }
 }
 
 Hooks.on('createActor', async actor => {

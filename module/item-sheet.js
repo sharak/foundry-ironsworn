@@ -1,4 +1,5 @@
 import { ironswornMoveRoll, ironswornRollDialog } from './ironsworn.js'
+import {IRONSWORN} from "./config.js";
 
 /**
  * Extend the basic ItemSheet with some very simple modifications
@@ -37,6 +38,11 @@ export class IronswornItemSheet extends ItemSheet {
     // for (let attr of Object.values(data.data.attributes)) {
     //   attr.isCheckbox = attr.dtype === 'Boolean'
     // }
+    data.difficulties = { }
+    for (let [key,value] of Object.entries(IRONSWORN.difficulties)) {
+      if (!data.data.difficulties[key]) {}
+      data.data.difficulties[key] = value
+    }
     return data
   }
 

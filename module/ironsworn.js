@@ -199,7 +199,6 @@ export async function ironswornRollDialog(data, stat, title) {
 }
 
 Handlebars.registerHelper('rangeProgress', function (context, options) {
-    debugger;
     const results = []
     let marks = context.hash.marks;
     for (let value = context.hash.from; value <= context.hash.to; value++) {

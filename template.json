@@ -40,8 +40,8 @@
     ],
     "templates": {
       "progress": {
-        "description": "",
-        "rank": "troublesome",
+        "difficulties": {},
+        "level": 4,
         "current": 0
       }
     },

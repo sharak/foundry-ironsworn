@@ -27,6 +27,7 @@
   "IRONSWORN.Vows": "Juramentos",
   "IRONSWORN.Mark": "Mark",
   "IRONSWORN.AddVow": "Añadir juramento",
+  "IRONSWORN.NewVow": "Nuevo juramento",
   "MOVE_TYPES.Adventure": "Movimientos de aventura",
   "MOVE_TYPES.Fate": "Movimientos de destino",
   "MOVE_TYPES.Combat": "Movimientos de combate",
@@ -34,6 +35,7 @@
   "MOVE_TYPES.Quest": "Movimientos de búsqueda",
   "MOVE_TYPES.Suffer": "Movimientos de sufrimiento",
 
+  "IRONSWORN.Difficulty": "Nivel de desafío",
   "DIFFICULTY.Epic":  "Épico",
   "DIFFICULTY.Extreme":  "Extremo",
   "DIFFICULTY.Formidable":  "Formidable",

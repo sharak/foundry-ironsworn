@@ -24,8 +24,7 @@ export function getAttributeNames(attr) {
 }
 
 export function getDifficultyNames(level) {
-    debugger;
-    switch (level) {
+    switch (parseInt(level)) {
         case 1:
             return game.i18n.localize('DIFFICULTY.Epic');
         case 2:

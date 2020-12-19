@@ -27,6 +27,7 @@
   "IRONSWORN.Vows": "Vows",
   "IRONSWORN.Mark": "Mark",
   "IRONSWORN.AddVow": "Add vow",
+  "IRONSWORN.NewVow": "New vow",
   "MOVE_TYPES.Adventure": "Adventure",
   "MOVE_TYPES.Fate": "Fate",
   "MOVE_TYPES.Combat": "Combat",
@@ -34,6 +35,7 @@
   "MOVE_TYPES.Quest": "Quest",
   "MOVE_TYPES.Suffer": "Suffer",
 
+  "IRONSWORN.Difficulty": "Difficulty",
   "DIFFICULTY.Epic":  "Epic",
   "DIFFICULTY.Extreme":  "Extreme",
   "DIFFICULTY.Formidable":  "Formidable",

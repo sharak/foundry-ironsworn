@@ -1,0 +1,21 @@
+<form class="{{cssClass}}" autocomplete="off">
+    {{!-- Sheet Body --}}
+    <section class="sheet-body flexcol">
+        <header class="sheet-header flexrow" style="flex: 0 0 64px;">
+            <img class="profile" src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
+            <div class="header-details flexcol">
+                <h1>
+                    <input name="name" type="text" value="{{item.name}}" placeholder="Name"/>
+                </h1>
+            </div>
+
+        </header>
+        <div class="vow-difficulties form-group stacked" style="flex: 0 0">
+            <label>{{ localize 'IRONSWORN.Difficulty' }}</label>
+            <div class="flexrow">
+                {{radioBoxes 'data.level' data.difficulties checked=item.data.level localize=true}}
+            </div>
+        </div>
+        {{editor content=data.description target="data.description" button=true owner=owner editable=true}}
+    </section>
+</form>

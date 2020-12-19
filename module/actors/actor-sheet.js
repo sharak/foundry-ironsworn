@@ -36,26 +36,7 @@ export class IronswornActorSheet extends ActorSheet {
     getData() {
         const data = super.getData()
 
-        data.vows = [
-            {
-                id: "sdafasre",
-                name: "Encontrar a mi hermana",
-                level: 1,
-                marks: 2,
-            },
-            {
-                id: "sdfagaewf",
-                name: "Guiar la caravana de forma segura a través de los Bosques de Luto",
-                level: 4,
-                marks: 4,
-            },
-            {
-                id: "afstergdf",
-                name: "Matar a la wyverna",
-                level: 8,
-                marks: 16,
-            }
-        ];
+        data.vows = data.items.filter(item => item.type === 'vow');
 
         let movesForDisplay = {}
         const moves = this.actor.items.filter(item => item.type === 'move');
@@ -95,6 +76,21 @@ export class IronswornActorSheet extends ActorSheet {
 
         // Moves expand in place
         html.find('.move-entry').click(this._handleMoveExpand.bind(this))
+
+        html.find('.mark-progress').click(ev => {
+            const itemId = ev.currentTarget.dataset.id;
+            const marks = parseInt(ev.currentTarget.dataset.marks);
+            const item = this.actor.getOwnedItem(itemId);
+            const currentMarks = item.data.data.current;
+            item.update({'data.current': currentMarks+marks});
+        })
+        html.find('.add-item').click(ev => {
+            switch (ev.currentTarget.dataset.type) {
+                case 'vow':
+                    this.actor.createEmptyVow(ev);
+                    break;
+            }
+        })
 
         // Update Inventory Item
         html.find('.item-edit').click(ev => {
