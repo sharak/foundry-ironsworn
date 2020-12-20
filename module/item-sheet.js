@@ -1,4 +1,4 @@
-import { ironswornMoveRoll, ironswornRollDialog } from './ironsworn.js'
+import {ironswornRollDialog} from './ironsworn.js'
 import {IRONSWORN} from "./config.js";
 
 /**
@@ -40,8 +40,8 @@ export class IronswornItemSheet extends ItemSheet {
     // }
     data.difficulties = { }
     for (let [key,value] of Object.entries(IRONSWORN.difficulties)) {
-      if (!data.data.difficulties[key]) {}
-      data.data.difficulties[key] = value
+      if (!data.difficulties[key]) {}
+      data.difficulties[key] = value
     }
     return data
   }

@@ -1,6 +1,7 @@
 import {ironswornRollDialog} from '../ironsworn.js'
 import {IronswornParser} from "../parser.js";
 import {getAttributeNames} from "../utils.js";
+import {IronswornDice} from "../roll.js";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -83,6 +84,15 @@ export class IronswornActorSheet extends ActorSheet {
             const item = this.actor.getOwnedItem(itemId);
             const currentMarks = item.data.data.current;
             item.update({'data.current': currentMarks+marks});
+        })
+        html.find('.fulfill-progress').click(ev => {
+            const itemId = ev.currentTarget.dataset.id;
+            const marks = parseInt(ev.currentTarget.dataset.marks);
+            const item = this.actor.getOwnedItem(itemId);
+            const actionValue = Math.floor(item.data.data.current / 4);
+            const roll = IronswornDice.progressRoll(this.actor.data?.data, actionValue);
+            roll.flavor = item.name;
+            roll.roll();
         })
         html.find('.add-item').click(ev => {
             switch (ev.currentTarget.dataset.type) {

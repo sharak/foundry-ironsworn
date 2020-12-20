@@ -13,7 +13,7 @@
         <div class="vow-difficulties form-group stacked" style="flex: 0 0">
             <label>{{ localize 'IRONSWORN.Difficulty' }}</label>
             <div class="flexrow">
-                {{radioBoxes 'data.level' data.difficulties checked=item.data.level localize=true}}
+                {{radioBoxes 'data.level' difficulties checked=item.data.level localize=true}}
             </div>
         </div>
         {{editor content=data.description target="data.description" button=true owner=owner editable=true}}

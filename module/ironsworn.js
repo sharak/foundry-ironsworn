@@ -11,6 +11,7 @@ import {IronswornActorSheet} from './actors/actor-sheet.js'
 import {IronswornParser} from "./parser.js";
 import {getAttributeNames, getDifficultyNames} from "./utils.js";
 import {preloadTemplates} from "./templates.js";
+import {IronswornDice} from "./roll.js";
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -21,7 +22,6 @@ Hooks.once('init', async function () {
 
     // Define custom Entity classes
     CONFIG.Actor.entityClass = IronswornActor
-    CONFIG.Dice.template = 'systems/foundry-ironsworn/templates/chat/roll.hbs'
     // CONFIG.RollTable.resultTemplate =
     //   'systems/foundry-ironsworn/templates/chat/table-draw.hbs'
 
@@ -101,76 +101,6 @@ Handlebars.registerHelper('ifIsIronswornRoll', function (options) {
 Handlebars.registerHelper('localizeDifficulty', function (value) {
     return getDifficultyNames(value);
 })
-function classesForRoll(r) {
-    const d = r.dice[0]
-    const maxRoll = d.faces
-    return [
-        d.constructor.name.toLowerCase(),
-        'd' + d.faces,
-        d.total === 1 ? 'min' : null,
-        d.total === maxRoll ? 'max' : null
-    ]
-        .filter(x => x)
-        .join(' ')
-}
-
-const actionRoll = roll => roll.terms[0].rolls.find(r => r.dice[0].faces === 6)
-
-const challengeRolls = roll =>
-    roll.terms[0].rolls.filter(r => r.dice[0].faces === 10)
-
-Handlebars.registerHelper('actionDieFormula', function () {
-    const r = actionRoll(this.roll)
-    const parts = [...r.terms]
-    const d = parts.shift()
-    const classes = classesForRoll(r)
-
-    return `<strong><span class="roll ${classes}">${d.total}</span>${parts.join('')}</strong>`
-})
-
-Handlebars.registerHelper('challengeDice', function () {
-    const [c1, c2] = challengeRolls(this.roll)
-    const c1span = `<span class="roll ${classesForRoll(c1)}">${c1.total}</span>`
-    const c2span = `<span class="roll ${classesForRoll(c2)}">${c2.total}</span>`
-    return `${c1span} ${c2span}`
-})
-
-Handlebars.registerHelper('ironswornHitType', function () {
-    const actionTotal = actionRoll(this.roll).total
-    const [challenge1, challenge2] = challengeRolls(this.roll).map(x => x.total)
-    const match = challenge1 === challenge2
-    if (actionTotal <= Math.min(challenge1, challenge2)) {
-        if (match) return game.i18n.localize('IRONSWORN.Complication')
-        return game.i18n.localize('IRONSWORN.Miss')
-    }
-    if (actionTotal > Math.max(challenge1, challenge2)) {
-        if (match) return game.i18n.localize('IRONSWORN.Oportunity');
-        return game.i18n.localize('IRONSWORN.StrongHit');
-    }
-    return game.i18n.localize('IRONSWORN.WeakHit');
-})
-
-export async function ironswornMoveRoll(bonusExpr = '0', values = {}, title) {
-    const r = new Roll(`{1d6+${bonusExpr},1d10,1d10}`, values).roll()
-    if (true) {
-        r.toMessage({flavor: `<div class="move-title">${title}</div>`})
-        return
-    }
-
-    const template = 'systems/foundry-ironsworn/templates/dice/roll.html'
-    const templateData = {
-        roll: r,
-        user: game.user._id
-    }
-    const content = await renderTemplate(template, templateData)
-
-    const rollChatData = {
-        type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-        roll: r,
-        content
-    }
-    ChatMessage.create(rollChatData)
-}
 
 class IronswornRollDialog extends Dialog {
 }
@@ -189,7 +119,10 @@ export async function ironswornRollDialog(data, stat, title) {
                 callback: x => {
                     const form = x[0].querySelector('form')
                     const bonus = parseInt(form[0].value, 10)
-                    ironswornMoveRoll(`@${stat}+${bonus || 0}`, data, title)
+                    const roll = IronswornDice.moveRoll(data,`@${stat}+${bonus || 0}`)
+                    roll.flavor = title;
+                    roll.roll();
+
                 }
             }
         },

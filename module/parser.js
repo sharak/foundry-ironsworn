@@ -1,4 +1,4 @@
-import {ironswornMoveRoll} from "./ironsworn.js";
+import {ironswornRollDialog} from "./ironsworn.js";
 import {getAttributeNames} from "./utils.js";
 
 export class IronswornParser {
@@ -8,11 +8,12 @@ export class IronswornParser {
         }
 
         html.find('a.inline-roll').on('click', event => {
+            event.stopPropagation();
             const options = event.currentTarget.dataset;
             const speaker = ChatMessage.getSpeaker();
             const actor = ChatMessage.getSpeakerActor(speaker);
             if (actor) {
-                ironswornMoveRoll(options.attr, actor.data?.data.options.title)
+                ironswornRollDialog(actor.data?.data, options.attr, actor.data?.data.options.title)
             }
 
         });
