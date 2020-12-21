@@ -40,14 +40,14 @@ export class IronswornDice {
         const [challenge1, challenge2] = this.challengeDice.map(x => x.total);
         const match = challenge1 === challenge2;
         if (actionValue <= Math.min(challenge1, challenge2)) {
-            if (match) return game.i18n.localize('IRONSWORN.Complication')
-            return game.i18n.localize('IRONSWORN.Miss')
+            if (match) return { cls: 'complication', type: 'IRONSWORN.Complication'}
+            return { cls: 'miss', type: 'IRONSWORN.Miss'}
         }
         if (actionValue > Math.max(challenge1, challenge2)) {
-            if (match) return game.i18n.localize('IRONSWORN.Oportunity');
-            return game.i18n.localize('IRONSWORN.StrongHit');
+            if (match) return { cls: 'oportunity', type: 'IRONSWORN.Oportunity'};
+            return { cls: 'strong-hit', type: 'IRONSWORN.StrongHit'};
         }
-        return game.i18n.localize('IRONSWORN.WeakHit');
+        return { cls: 'weak-hit', type: 'IRONSWORN.WeakHit'};
     }
 
     format(roll) {

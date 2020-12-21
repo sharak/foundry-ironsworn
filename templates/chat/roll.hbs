@@ -1,7 +1,7 @@
 <div class="dice-roll">
-        <div class="dice-result ironsworn-roll">
-            <div class="dice-formula">
-
+        <div class="dice-result">
+            <div class="dice-formula hit-type-{{ hit.cls }}">{{localize hit.type}}</div>
+            <div class="dice-tooltip">
                 <div class="action-die">
                     <div class="dice-result-title">{{ localize 'IRONSWORN.ActionValue'}}:</div>
                     <div class="dice-result-dice">
@@ -20,7 +20,6 @@
                         {{/each}}
                     </div>
                 </div>
-                <p class="hit-type">{{hit}}</p>
             </div>
         </div>
 </div>

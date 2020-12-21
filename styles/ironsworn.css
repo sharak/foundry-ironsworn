@@ -1,42 +1,116 @@
 @font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/montserrat/v15/JTURjIg1_i6t8kCHKm45_cJD7g4.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Montserrat';
+  font-family: 'EB Garamond';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/montserrat/v15/JTUSjIg1_i6t8kCHKm45xW4.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/ebgaramond/v14/SlGDmQSNjdsmc35JDF1K5E55YMjF_7DPuGi-6_RUAw.ttf) format('truetype');
 }
 @font-face {
-  font-family: 'Montserrat';
+  font-family: 'Texturina';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/texturina/v2/c4mM1nxpEtL3pXiAulRTkY-HGmNEX1b9NspjMwhAgliHhVrXy2eYGvUg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Texturina';
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/montserrat/v15/JTURjIg1_i6t8kCHKm45_ZpC7g4.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/texturina/v2/c4mM1nxpEtL3pXiAulRTkY-HGmNEX1b9NspjMwhAgliHhVrXy2eqGvUg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Texturina';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/texturina/v2/c4mM1nxpEtL3pXiAulRTkY-HGmNEX1b9NspjMwhAgliHhVrXy2dGHfUg.ttf) format('truetype');
+}
+.chat-message .hit-type-complication {
+  color: crimson;
+}
+.chat-message .hit-type-fail {
+  color: red;
+}
+.chat-message .hit-type-weak-hit {
+  color: #03fd6b;
+}
+.chat-message .hit-type-strong-hit {
+  color: #009933;
+}
+.chat-message .hit-type-oportinity {
+  color: goldenrod;
+}
+.chat-message .action-die,
+.chat-message .challenge-dice {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #CCCCCC;
+  padding: 0.2rem 0.4rem;
+}
+.chat-message .action-die .dice-formula,
+.chat-message .challenge-dice .dice-formula,
+.chat-message .action-die .dice-total,
+.chat-message .challenge-dice .dice-total {
+  background-color: #eee;
+}
+.chat-message .action-die .hit-type,
+.chat-message .challenge-dice .hit-type {
+  font-size: 20px;
+  font-weight: bold;
+  font-variant: all-small-caps;
+}
+.chat-message .action-die .roll,
+.chat-message .challenge-dice .roll {
+  width: 24px;
+  line-height: 24px;
+  display: inline-block;
+  margin-right: 1px;
+  background-image: url("/icons/svg/d6-grey.svg");
+  background-repeat: no-repeat;
+  background-size: 24px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+.chat-message .action-die .roll.d4,
+.chat-message .challenge-dice .roll.d4 {
+  background-image: url("/icons/svg/d4-grey.svg");
+}
+.chat-message .action-die .roll.d6,
+.chat-message .challenge-dice .roll.d6 {
+  background-image: url("/icons/svg/d6-grey.svg");
+}
+.chat-message .action-die .roll.d8,
+.chat-message .challenge-dice .roll.d8 {
+  background-image: url("/icons/svg/d8-grey.svg");
+}
+.chat-message .action-die .roll.d10,
+.chat-message .challenge-dice .roll.d10 {
+  background-image: url("/icons/svg/d10-grey.svg");
+}
+.chat-message .action-die .roll.d12,
+.chat-message .challenge-dice .roll.d12 {
+  background-image: url("/icons/svg/d12-grey.svg");
+}
+.chat-message .action-die .roll.d20,
+.chat-message .challenge-dice .roll.d20 {
+  background-image: url("/icons/svg/d20-grey.svg");
+}
+.chat-message .action-die .roll.min,
+.chat-message .challenge-dice .roll.min {
+  color: #aa0200;
+  filter: sepia(0.5) hue-rotate(-60deg);
+}
+.chat-message .action-die .roll.max,
+.chat-message .challenge-dice .roll.max {
+  color: #18520b;
+  filter: sepia(0.5) hue-rotate(60deg);
 }
 .ironsworn {
   /* Sheet Tabs */
   /* Items List */
   /* Attributes */
-}
-.ironsworn h1,
-.ironsworn h2,
-.ironsworn h3,
-.ironsworn h4,
-.ironsworn h5,
-.ironsworn h6 {
-  font-variant: all-small-caps;
-}
-.ironsworn .window-content {
-  background: #eee;
-  height: 100%;
-  padding: 5px;
-  overflow-y: scroll;
 }
 .ironsworn .sheet-area {
   margin-top: 0.5rem;
@@ -409,12 +483,22 @@
   line-height: 28px;
   border: none;
 }
-.chat-message .action-die,
-.chat-message .challenge-dice {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid #CCCCCC;
-  padding: 0.2rem 0.4rem;
+.ironsworn {
+  font-family: 'EB Garamond';
+}
+.ironsworn h1,
+.ironsworn h2,
+.ironsworn h3,
+.ironsworn h4,
+.ironsworn h5,
+.ironsworn h6 {
+  font-family: 'Texturina';
+}
+.ironsworn .window-content {
+  background: #eee;
+  height: 100%;
+  padding: 5px;
+  overflow-y: scroll;
 }
 .ironsworn.sheet.actor {
   min-width: 560px;
@@ -433,51 +517,4 @@
   font-weight: bold;
   line-height: 30px;
   font-variant: all-small-caps;
-}
-.ironsworn-roll .dice-formula,
-.ironsworn-roll .dice-total {
-  background-color: #eee;
-}
-.ironsworn-roll .hit-type {
-  font-size: 20px;
-  font-weight: bold;
-  font-variant: all-small-caps;
-}
-.ironsworn-roll .roll {
-  width: 24px;
-  line-height: 24px;
-  display: inline-block;
-  margin-right: 1px;
-  background-image: url("/icons/svg/d6-grey.svg");
-  background-repeat: no-repeat;
-  background-size: 24px 24px;
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-}
-.ironsworn-roll .roll.d4 {
-  background-image: url("/icons/svg/d4-grey.svg");
-}
-.ironsworn-roll .roll.d6 {
-  background-image: url("/icons/svg/d6-grey.svg");
-}
-.ironsworn-roll .roll.d8 {
-  background-image: url("/icons/svg/d8-grey.svg");
-}
-.ironsworn-roll .roll.d10 {
-  background-image: url("/icons/svg/d10-grey.svg");
-}
-.ironsworn-roll .roll.d12 {
-  background-image: url("/icons/svg/d12-grey.svg");
-}
-.ironsworn-roll .roll.d20 {
-  background-image: url("/icons/svg/d20-grey.svg");
-}
-.ironsworn-roll .roll.min {
-  color: #aa0200;
-  filter: sepia(0.5) hue-rotate(-60deg);
-}
-.ironsworn-roll .roll.max {
-  color: #18520b;
-  filter: sepia(0.5) hue-rotate(60deg);
 }
