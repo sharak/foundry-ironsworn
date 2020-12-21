@@ -6,12 +6,14 @@
 
 // Import Modules
 import {IronswornActor} from './actors/actor.js'
-import {IronswornItemSheet} from './item-sheet.js'
+import {IronswornItemSheet} from './items/item-sheet.js'
 import {IronswornActorSheet} from './actors/actor-sheet.js'
 import {IronswornParser} from "./parser.js";
 import {getAttributeNames, getDifficultyNames} from "./utils.js";
 import {preloadTemplates} from "./templates.js";
 import {IronswornDice} from "./roll.js";
+import {IronswornChat} from "./chat.js";
+import {IronswornItem} from "./items/item.js";
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -22,6 +24,7 @@ Hooks.once('init', async function () {
 
     // Define custom Entity classes
     CONFIG.Actor.entityClass = IronswornActor
+    CONFIG.Item.entityClass = IronswornItem
     // CONFIG.RollTable.resultTemplate =
     //   'systems/foundry-ironsworn/templates/chat/table-draw.hbs'
 
@@ -85,7 +88,8 @@ Hooks.on('renderIronswornRollDialog', async (dialog, html, data) => {
     html.find('input').focus()
 })
 
-Hooks.on('renderItemSheet', IronswornParser.ParseSheetContent)
+Hooks.on('renderItemSheet', IronswornParser.ParseSheetContent);
+Hooks.on('renderChatLog', (app, html, data) => IronswornChat.chatListeners(app, html, data));
 
 Handlebars.registerHelper('join', function (a, joiner) {
     return a.join(joiner)
@@ -182,14 +186,4 @@ Handlebars.registerHelper('rangeEach', function (context, options) {
 Handlebars.registerHelper('capitalize', txt => {
     const [first, ...rest] = txt
     return `${first.toUpperCase()}${rest.join('')}`
-})
-
-Handlebars.registerHelper('actionButtonDatas', function (button) {
-    const datas = [];
-    for (let dataKey of Object.keys(button)) {
-        if(dataKey === 'title') continue;
-        const value = button[dataKey];
-        datas.push(`data-${dataKey}="${value}"`)
-    }
-    return datas.join(" ");
 })

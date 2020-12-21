@@ -1,5 +1,5 @@
-import {ironswornRollDialog} from './ironsworn.js'
-import {IRONSWORN} from "./config.js";
+import {ironswornRollDialog} from '../ironsworn.js'
+import {IRONSWORN} from "../config.js";
 
 /**
  * Extend the basic ItemSheet with some very simple modifications

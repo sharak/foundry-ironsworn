@@ -58,6 +58,11 @@ export class IronswornActor extends Actor {
         }
         return await this.createOwnedItem(data, {renderSheet: true});
     }
+
+    async markExperience(experience) {
+        const currentExperience = parseInt(this.data.data.experience);
+        await this.update({"data.experience": currentExperience + parseInt(experience)})
+    }
 }
 
 Hooks.on('createActor', async actor => {

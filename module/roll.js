@@ -106,11 +106,13 @@ export class IronswornDice {
             case "IRONSWORN.Miss":
                 const recommitButton = {
                     title: game.i18n.localize('IRONSWORN.VOW.Recommit'),
+                    actorId: actor._id,
                     itemId: item._id,
                     action: 'recommit-vow'
                 }
                 const giveUpButton = {
                     title: game.i18n.localize('IRONSWORN.VOW.GiveUp'),
+                    actorId: actor._id,
                     itemId: item._id,
                     action: 'giveup-vow'
                 }
@@ -118,20 +120,18 @@ export class IronswornDice {
                 break
             case "IRONSWORN.Oportunity":
             case "IRONSWORN.StrongHit":
-                const diffSH = IRONSWORN.difficulties[item.data.data.level];
-                let experienceSH = IRONSWORN.experience[diffSH];
-                const experienceSHButton = await this._markExperience(actor, experienceSH);
+                const experienceSHButton = await this._markExperience(actor, item.data.data.level);
                 if (experienceSHButton) {
                     buttons.push(experienceSHButton);
                 }
+                buttons.push(this.fulfillButton(actor, item))
                 break;
             case "IRONSWORN.WeakHit":
-                const difficulty = IRONSWORN.difficulties[item.data.data.level];
-                let experience = IRONSWORN.experience[difficulty] - 1;
-                const experienceButton = await this._markExperience(actor, experience);
+                const experienceButton = await this._markExperience(actor, item.data.data.level, -1);
                 if (experienceButton) {
                     buttons.push(experienceButton);
                 }
+                buttons.push(this.fulfillButton(actor,item))
                 break;
         }
 
@@ -140,10 +140,11 @@ export class IronswornDice {
         })
     }
 
-    async _markExperience(actor, experience) {
+    async _markExperience(actor, level, mod = 0) {
+        const difficulty = IRONSWORN.difficulties[level];
+        const experience = IRONSWORN.experience[difficulty] + mod;
         if (game.settings.get('foundry-ironsworn', 'autoMarkExperience')) {
-            const currentExperience = parseInt(actor.data.experience);
-            await actor.update({"data.experience": currentExperience + experience});
+            await actor.markExperience(experience);
             return false;
         } else {
             return {
@@ -154,4 +155,14 @@ export class IronswornDice {
             }
         }
     }
+    fulfillButton(actor, item) {
+        return {
+            title: game.i18n.localize('IRONSWORN.VOW.Complete'),
+            actorId: actor._id,
+            itemId: item._id,
+            action: 'fulfill'
+        }
+    }
+
+
 }
