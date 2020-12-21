@@ -21,5 +21,16 @@
                     </div>
                 </div>
             </div>
+            {{#if buttons}}
+                <div class="card-buttons">
+                {{#each buttons as |button|}}
+                    <button type="button"
+                        {{#each button as |value key|}}
+                            data-{{key}}="{{value}}"
+                        {{/each}}
+                    >{{button.title}}</button>
+                {{/each}}
+                </div>
+            {{/if}}
         </div>
 </div>

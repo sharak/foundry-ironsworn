@@ -37,7 +37,7 @@ export class IronswornActorSheet extends ActorSheet {
     getData() {
         const data = super.getData()
 
-        data.vows = data.items.filter(item => item.type === 'vow');
+        data.vows = data.items.filter(item => item.type === 'vow' && !item.data?.completed);
 
         let movesForDisplay = {}
         const moves = this.actor.items.filter(item => item.type === 'move');
@@ -92,7 +92,7 @@ export class IronswornActorSheet extends ActorSheet {
             const actionValue = Math.floor(item.data.data.current / 4);
             const roll = IronswornDice.progressRoll(this.actor.data?.data, actionValue);
             roll.flavor = item.name;
-            roll.roll();
+            roll.fulfill(this.actor, item);
         })
         html.find('.add-item').click(ev => {
             switch (ev.currentTarget.dataset.type) {

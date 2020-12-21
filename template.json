@@ -42,7 +42,8 @@
       "progress": {
         "difficulties": {},
         "level": 4,
-        "current": 0
+        "current": 0,
+        "completed": false
       }
     },
     "progress": {

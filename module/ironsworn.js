@@ -32,14 +32,22 @@ Hooks.once('init', async function () {
     Items.registerSheet('ironsworn', IronswornItemSheet, {makeDefault: true})
 
     // Register system settings
-    game.settings.register('ironsworn', 'macroShorthand', {
+    game.settings.register('foundry-ironsworn', 'macroShorthand', {
         name: 'SETTINGS.SimpleMacroShorthandN',
         hint: 'SETTINGS.SimpleMacroShorthandL',
         scope: 'world',
         type: Boolean,
-        default: true,
-        config: true
+        default: true
     })
+
+    game.settings.register('foundry-ironsworn', 'autoMarkExperience', {
+        name: 'SETTINGS.AutoExperience',
+        hint: 'SETTINGS.AutoExperienceHint',
+        config: true,
+        scope: 'client',
+        type: Boolean,
+        default: false
+    });
 
     await preloadTemplates();
 })
@@ -174,4 +182,14 @@ Handlebars.registerHelper('rangeEach', function (context, options) {
 Handlebars.registerHelper('capitalize', txt => {
     const [first, ...rest] = txt
     return `${first.toUpperCase()}${rest.join('')}`
+})
+
+Handlebars.registerHelper('actionButtonDatas', function (button) {
+    const datas = [];
+    for (let dataKey of Object.keys(button)) {
+        if(dataKey === 'title') continue;
+        const value = button[dataKey];
+        datas.push(`data-${dataKey}="${value}"`)
+    }
+    return datas.join(" ");
 })
