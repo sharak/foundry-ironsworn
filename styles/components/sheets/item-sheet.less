@@ -1,0 +1,43 @@
+.item.sheet {
+  .asset {
+    &.actor {
+      .asset-ability {
+        cursor: pointer;
+        &:not(.ability-enabled) {
+          font-style: italic !important;
+          color: #A6A6A6;
+        }
+      }
+
+    }
+    .tox-tinymce {
+      height: 250px !important;
+    }
+
+    &-field {
+      align-items: center;
+
+      label {
+        flex-grow: 0;
+        padding-right: .5rem;
+      }
+    }
+
+    .asset-abilities {
+      margin: .5rem;
+      .asset-ability {
+        border-top: 1px solid #CCCCCC;
+        padding: .5rem 0;
+
+        .editor {
+          min-height: 50px;
+        }
+
+        &:last-child {
+          border-bottom: 1px solid #CCCCCC;;
+        }
+      }
+    }
+  }
+
+}

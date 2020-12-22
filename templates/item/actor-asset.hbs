@@ -1,0 +1,43 @@
+<form class="{{cssClass}} asset actor" autocomplete="off">
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+
+        <header class="sheet-header">
+            <img class="profile-img" src="{{item.img}}" title="{{item.name}}" />
+            <div class="header-details">
+                <h1>{{item.name}}</h1>
+            </div>
+        </header>
+        {{#if data.hasName}}
+            <div class="flexrow asset-field">
+                <label for="data.assetName">{{ localize 'ASSETS.AssetName'}}: </label>
+                <input type="text" name="data.assetName" value="{{data.assetName}}">
+            </div>
+        {{/if}}
+        <div class="flexrow">
+            <div class="flexcol">
+                {{#if data.description}}
+                    <p>{{data.description}}</p>
+                {{/if}}
+
+                <div class="asset-abilities">
+                    {{#each data.abilities}}
+                        <div class="asset-ability {{#if enabled}}ability-enabled{{/if}}" data-ability-key="{{@key}}">
+                            {{{description}}}
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+            {{#if data.health.max }}
+                <div class="flexcol stack">
+                    {{#rangeEach from=data.health.max to=0 current=data.health.current}}
+                        <div class="clickable block stack-row {{stat}} {{#if isCurrent}} selected {{/if}}" data-resource="tpr"
+                             data-value="{{value}}">
+                            {{valueStr}}
+                        </div>
+                    {{/rangeEach}}
+                </div>
+            {{/if}}
+        </div>
+    </section>
+</form>

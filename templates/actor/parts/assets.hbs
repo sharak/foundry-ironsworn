@@ -1,5 +1,15 @@
 <div class="flexrow">
     <section class="sheet-area">
         <h1 style="text-align:center">Assets</h1>
+        <ul class="assets-list">
+            {{#each assets}}
+                <li class="asset item flexrow" data-item-id="{{_id}}">
+                    <a class="item-edit" title="{{name}}">{{name}} {{#if data.hasName}}[{{data.assetName}}]{{/if}} {{#if data.health.max}}({{data.health.current}}/{{data.health.max}}){{/if}}</a>
+                    <div class="item-controls">
+                        <a class="item-delete" title="{{ localize 'IRONSWORN.DeleteItem'}}"><i class="fas fa-trash"></i></a>
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
     </section>
 </div>

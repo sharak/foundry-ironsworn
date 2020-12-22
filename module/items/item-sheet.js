@@ -26,6 +26,9 @@ export class IronswornItemSheet extends ItemSheet {
   /** @override */
   get template () {
     const path = 'systems/ironsworn/templates/item'
+    if (this.item.data.type === 'asset' && this.actor) {
+      return `${path}/actor-asset.hbs`
+    }
     return `${path}/${this.item.data.type}.hbs`
   }
 
@@ -63,6 +66,10 @@ export class IronswornItemSheet extends ItemSheet {
   activateListeners (html) {
     super.activateListeners(html)
 
+    html.find('.stack-row').on("click", ev => {
+      const value = ev.currentTarget.dataset.value
+      this.item.update({'data.health.current': parseInt(value)});
+    })
     // Activate roll links
     html.find('a.inline-roll').on('click', ev => {
       ev.preventDefault()

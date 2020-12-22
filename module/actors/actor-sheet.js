@@ -38,6 +38,7 @@ export class IronswornActorSheet extends ActorSheet {
         const data = super.getData()
 
         data.vows = data.items.filter(item => item.type === 'vow' && !item.data?.completed);
+        data.assets = data.items.filter(item => item.type === 'asset');
 
         let movesForDisplay = {}
         const moves = this.actor.items.filter(item => item.type === 'move');

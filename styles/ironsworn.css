@@ -29,7 +29,7 @@
 .chat-message .hit-type-complication {
   color: crimson;
 }
-.chat-message .hit-type-fail {
+.chat-message .hit-type-miss {
   color: red;
 }
 .chat-message .hit-type-weak-hit {
@@ -112,6 +112,10 @@
   /* Items List */
   /* Attributes */
 }
+.ironsworn .item-controls {
+  flex: 0;
+  padding-right: 20px;
+}
 .ironsworn .sheet-area {
   margin-top: 0.5rem;
 }
@@ -125,9 +129,6 @@
   font-weight: 500;
   border-bottom: 2px solid #CCCCCC;
   margin-bottom: 1rem;
-}
-.ironsworn.sheet {
-  font-family: 'Montserrat';
 }
 .ironsworn.sheet .sheet-progress {
   border-bottom: 1px solid #CCCCCC;
@@ -411,19 +412,6 @@
   text-decoration: underline;
   text-shadow: none;
 }
-.ironsworn .sheet-body {
-  height: 100%;
-  overflow: hidden;
-}
-.ironsworn .sheet-body .tab {
-  height: 100%;
-  overflow-y: auto;
-}
-.ironsworn .editor,
-.ironsworn .editor-content {
-  height: 100%;
-  min-height: 100px;
-}
 .ironsworn .move-li {
   height: 1.5rem;
 }
@@ -482,6 +470,36 @@
   text-align: center;
   line-height: 28px;
   border: none;
+}
+.item.sheet .asset.actor .asset-ability {
+  cursor: pointer;
+}
+.item.sheet .asset.actor .asset-ability:not(.ability-enabled) {
+  font-style: italic !important;
+  color: #A6A6A6;
+}
+.item.sheet .asset .tox-tinymce {
+  height: 250px !important;
+}
+.item.sheet .asset-field {
+  align-items: center;
+}
+.item.sheet .asset-field label {
+  flex-grow: 0;
+  padding-right: 0.5rem;
+}
+.item.sheet .asset .asset-abilities {
+  margin: 0.5rem;
+}
+.item.sheet .asset .asset-abilities .asset-ability {
+  border-top: 1px solid #CCCCCC;
+  padding: 0.5rem 0;
+}
+.item.sheet .asset .asset-abilities .asset-ability .editor {
+  min-height: 50px;
+}
+.item.sheet .asset .asset-abilities .asset-ability:last-child {
+  border-bottom: 1px solid #CCCCCC;
 }
 .ironsworn {
   font-family: 'EB Garamond';

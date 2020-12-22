@@ -73,12 +73,8 @@
     "asset": {
       "templates": [],
       "description": "",
-      "fields": [
-        {
-          "name": "Name",
-          "value": ""
-        }
-      ],
+      "hasName": false,
+      "assetName": "",
       "abilities": [
         {
           "enabled": true,

@@ -187,3 +187,7 @@ Handlebars.registerHelper('capitalize', txt => {
     const [first, ...rest] = txt
     return `${first.toUpperCase()}${rest.join('')}`
 })
+
+Handlebars.registerHelper('targetAbilityDescription', (key) => {
+    return `data.abilities.${key}.description`;
+})
