@@ -4,7 +4,7 @@
   "description": "An implementation of the Ironsworn system. Based entirely on the Simple Worldbuilding System for Foundry designed by Atropos.",
   "version": "0.0.16",
   "minimumCoreVersion": "0.7.5",
-  "compatibleCoreVersion": "0.7.7",
+  "compatibleCoreVersion": "0.7.8",
   "templateVersion": 2,
   "author": "Roberto Lorite y Wallace McGregor",
   "esmodules": [
