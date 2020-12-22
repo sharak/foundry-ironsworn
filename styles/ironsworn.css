@@ -501,15 +501,15 @@
 .item.sheet .asset .asset-abilities .asset-ability:last-child {
   border-bottom: 1px solid #CCCCCC;
 }
-.ironsworn {
+.ironsworn .window-content {
   font-family: 'EB Garamond';
 }
-.ironsworn h1,
-.ironsworn h2,
-.ironsworn h3,
-.ironsworn h4,
-.ironsworn h5,
-.ironsworn h6 {
+.ironsworn .window-content h1,
+.ironsworn .window-content h2,
+.ironsworn .window-content h3,
+.ironsworn .window-content h4,
+.ironsworn .window-content h5,
+.ironsworn .window-content h6 {
   font-family: 'Texturina';
 }
 .ironsworn .window-content {
