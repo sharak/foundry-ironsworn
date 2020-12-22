@@ -143,7 +143,7 @@ export class IronswornDice {
     async _markExperience(actor, level, mod = 0) {
         const difficulty = IRONSWORN.difficulties[level];
         const experience = IRONSWORN.experience[difficulty] + mod;
-        if (game.settings.get('foundry-ironsworn', 'autoMarkExperience')) {
+        if (game.settings.get('ironsworn', 'autoMarkExperience')) {
             await actor.markExperience(experience);
             return false;
         } else {

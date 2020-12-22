@@ -1,5 +1,5 @@
 {
-  "name": "foundry-ironsworn",
+  "name": "ironsworn",
   "title": "Ironsworn",
   "description": "An implementation of the Ironsworn system. Based entirely on the Simple Worldbuilding System for Foundry designed by Atropos.",
   "version": "0.0.15",
@@ -17,28 +17,28 @@
     {
       "name": "ironsworntables",
       "label": "Ironsworn Tables",
-      "system": "foundry-ironsworn",
+      "system": "ironsworn",
       "path": "packs/tables.db",
       "entity": "RollTable"
     },
     {
       "name": "ironswornitems",
       "label": "Ironsworn Items",
-      "system": "foundry-ironsworn",
+      "system": "ironsworn",
       "path": "packs/items.db",
       "entity": "Item"
     },
     {
       "name": "ironswornmoves",
-      "label": "Ironsworn Moves",
-      "system": "foundry-ironsworn",
+      "label": "Movimientos",
+      "system": "ironsworn",
       "path": "packs/moves.db",
       "entity": "Item"
     },
     {
       "name": "ironswornscenes",
       "label": "Ironsworn Maps",
-      "system": "foundry-ironsworn",
+      "system": "ironsworn",
       "path": "packs/scenes.db",
       "entity": "Scene"
     }

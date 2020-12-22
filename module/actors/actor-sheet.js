@@ -68,10 +68,10 @@ export class IronswornActorSheet extends ActorSheet {
 
         // Enable editing stats
         html.find('#edit-stats').click(async ev => {
-            if (this.actor.getFlag('foundry-ironsworn', 'editStats')) {
-                await this.actor.unsetFlag('foundry-ironsworn', 'editStats')
+            if (this.actor.getFlag('ironsworn', 'editStats')) {
+                await this.actor.unsetFlag('ironsworn', 'editStats')
             } else {
-                await this.actor.setFlag('foundry-ironsworn', 'editStats', 'true')
+                await this.actor.setFlag('ironsworn', 'editStats', 'true')
             }
         })
 
@@ -174,7 +174,7 @@ export class IronswornActorSheet extends ActorSheet {
             // Clicked an oracle, roll from the table
             let table = game.tables.find(x => x.name === tableName)
             if (!table) {
-                const pack = game.packs.get('foundry-ironsworn.ironsworntables')
+                const pack = game.packs.get('ironsworn.ironsworntables')
                 const index = await pack.getIndex()
                 const entry = index.find(x => x.name == tableName)
                 if (entry) table = await pack.getEntity(entry._id)

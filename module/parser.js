@@ -26,13 +26,14 @@ export class IronswornParser {
 
         let text = [];
 
+
         text = TextEditor._getTextNodes(html);
 
         const regex = new RegExp(/@(ironsworn)\.(.*?)\[([^\]]+)\](?:{([^}]+)})?/, 'gi');
         TextEditor._replaceTextContent(text, regex, (match, tag, type, options, name) =>
             IronswornParser.createLink(type, options, name, title));
 
-        return html.innerHTML;
+        return TextEditor.enrichHTML(html.innerHTML);
     }
 
     static createLink(type, options, name, title) {
