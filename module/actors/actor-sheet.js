@@ -27,7 +27,7 @@ export class IronswornActorSheet extends ActorSheet {
 
     /** @override */
     get template() {
-        const path = 'systems/foundry-ironsworn/templates/actor'
+        const path = 'systems/ironsworn/templates/actor'
         return `${path}/${this.actor.data.type}.hbs`
     }
 
@@ -187,7 +187,7 @@ export class IronswornActorSheet extends ActorSheet {
     async _rollDialog(key) {
         const move = MOVES[key]
         const html = await renderTemplate(
-            'systems/foundry-ironsworn/templates/move-dialog.hbs',
+            'systems/ironsworn/templates/move-dialog.hbs',
             move
         )
 

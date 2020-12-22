@@ -26,7 +26,7 @@ Hooks.once('init', async function () {
     CONFIG.Actor.entityClass = IronswornActor
     CONFIG.Item.entityClass = IronswornItem
     // CONFIG.RollTable.resultTemplate =
-    //   'systems/foundry-ironsworn/templates/chat/table-draw.hbs'
+    //   'systems/ironsworn/templates/chat/table-draw.hbs'
 
     // Register sheet application classes
     Actors.unregisterSheet('core', ActorSheet)
@@ -118,7 +118,7 @@ class IronswornRollDialog extends Dialog {
 }
 
 export async function ironswornRollDialog(data, stat, title) {
-    const template = 'systems/foundry-ironsworn/templates/roll-dialog.hbs'
+    const template = 'systems/ironsworn/templates/roll-dialog.hbs'
     const templateData = {data, stat: getAttributeNames(stat)}
     const html = await renderTemplate(template, templateData)
     let d = new IronswornRollDialog({

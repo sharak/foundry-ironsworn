@@ -76,7 +76,7 @@ export class IronswornDice {
         if (!this._roll._rolled) {
             this._roll.roll();
         }
-        const template = 'systems/foundry-ironsworn/templates/chat/roll.hbs'
+        const template = 'systems/ironsworn/templates/chat/roll.hbs'
         const data = mergeObject({
             actionValue: this.actionValue,
             actionDie: this.format(this.actionDie),

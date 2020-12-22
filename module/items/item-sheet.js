@@ -25,7 +25,7 @@ export class IronswornItemSheet extends ItemSheet {
   /* -------------------------------------------- */
   /** @override */
   get template () {
-    const path = 'systems/foundry-ironsworn/templates/item'
+    const path = 'systems/ironsworn/templates/item'
     return `${path}/${this.item.data.type}.hbs`
   }
 
