@@ -60,8 +60,14 @@ export class IronswornActor extends Actor {
     }
 
     async markExperience(experience) {
-        const currentExperience = parseInt(this.data.data.experience);
-        await this.update({"data.experience": currentExperience + parseInt(experience)})
+        const currentExperience = parseInt(this.data.data.experience.current);
+        await this.update({"data.experience.current": currentExperience + parseInt(experience)})
+    }
+    get availableExperience() {
+        return this.data.data.experience.current - this.data.data.experience.spent;
+    }
+    async spentExperience(experience) {
+        await this.update({'data.experience.spent': this.data.data.experience.spent + experience})
     }
 }
 

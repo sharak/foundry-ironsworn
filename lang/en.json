@@ -34,6 +34,7 @@
   "IRONSWORN.AddVow": "Add vow",
   "IRONSWORN.NewVow": "New vow",
   "IRONSWORN.MarkExperience": "Mark experience",
+  "IRONSWORN.NotEnoughExperience": "Not enough experience for upgrade",
   "MOVE_TYPES.Adventure": "Adventure",
   "MOVE_TYPES.Fate": "Fate",
   "MOVE_TYPES.Combat": "Combat",

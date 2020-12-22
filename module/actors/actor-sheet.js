@@ -218,6 +218,39 @@ export class IronswornActorSheet extends ActorSheet {
             })
         }
     }
+
+    async _onDropItem(event, data) {
+        const item = game.items.get(data.id);
+        const isActorItem = this.actor.items.find(i => i.name === item.name);
+        if (!isActorItem) {
+            const actorAssets = this.actor.items.filter(i => i.type === 'asset');
+
+            if (actorAssets.length >= 3) {
+                const dialog = new Dialog({
+                    title: game.i18n.localize('IRONSWORN.SpentExperienceDialogTitle'),
+                    content: game.i18n.localize('IRONSWORN.SpentNewExperienceDialogContent'),
+                    buttons: {
+                        spent: {
+                            label: game.i18n.format('IRONSWORN.SpentExperienceButton', {experience: 3}),
+                            callback: async () => {
+                                if (this.actor.availableExperience >= 3) {
+                                    debugger;
+                                    await this.actor.spentExperience(3);
+                                    return super._onDropItem(event, data);
+                                } else {
+                                    ui.notifications.warn(game.i18n.localize('IRONSWORN.NotEnoughExperience'))
+                                }
+                            }
+                        }
+                    }
+                })
+                dialog.render(true)
+            } else {
+                return super._onDropItem(event, data);
+            }
+        }
+        return false;
+    }
 }
 
 const MOVES = [

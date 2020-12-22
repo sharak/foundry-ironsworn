@@ -14,7 +14,10 @@
       "health": 5,
       "spirit": 5,
       "supply": 5,
-      "experience": 0,
+      "experience": {
+        "current": 0,
+        "spent": 0
+      },
       "momentum": 2,
       "debility": {
         "corrupted": false,

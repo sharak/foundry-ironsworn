@@ -242,6 +242,9 @@
 }
 .ironsworn.sheet header.sheet-header .xp {
   flex: 0;
+  min-width: 50px;
+  border: 1px solid black;
+  padding: 0.2rem;
 }
 .ironsworn .margin-left {
   flex: 0;
@@ -503,6 +506,7 @@
 }
 .ironsworn .window-content {
   font-family: 'EB Garamond';
+  font-size: 16px;
 }
 .ironsworn .window-content h1,
 .ironsworn .window-content h2,

@@ -33,7 +33,13 @@
   "IRONSWORN.Fulfill": "Fulfill",
   "IRONSWORN.AddVow": "Añadir juramento",
   "IRONSWORN.NewVow": "Nuevo juramento",
+  "IRONSWORN.SpentExperienceDialogTitle": "Gastar experiencia",
+  "IRONSWORN.SpentNewExperienceDialogContent": "Este recurso cuesta 3 puntos de expericencia. ¿Deseas gastarlos?",
+  "IRONSWORN.SpentExperienceDialogContent": "Actualizar este recurso cuesta 2 puntos de expericencia. ¿Deseas gastarlos?",
+  "IRONSWORN.SpentExperienceButton": "Gastar {experience} puntos de experiencia",
+
   "IRONSWORN.MarkExperience": "Marcar experiencia",
+  "IRONSWORN.NotEnoughExperience": "No tienes suficiente experiencia para gastar en el recurso",
   "MOVE_TYPES.Adventure": "Movimientos de aventura",
   "MOVE_TYPES.Fate": "Movimientos de destino",
   "MOVE_TYPES.Combat": "Movimientos de combate",

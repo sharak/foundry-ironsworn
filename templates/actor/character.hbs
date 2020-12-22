@@ -4,8 +4,9 @@
     <header class="sheet-header">
         <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="50" width="50"/>
         <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
-        <div class="xp">
-            Exp: {{actor.data.experience}}
+        <div class="xp flexcol">
+            <span>Exp: {{actor.data.experience.current}}</span>
+            <span>Spt: {{actor.data.experience.spent}}</span>
         </div>
     </header>
 
