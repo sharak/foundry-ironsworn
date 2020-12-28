@@ -69,6 +69,10 @@ export class IronswornActor extends Actor {
     async spentExperience(experience) {
         await this.update({'data.experience.spent': this.data.data.experience.spent + experience})
     }
+
+    get momentum() {
+        return parseInt(this.data.data.momentum);
+    }
 }
 
 Hooks.on('createActor', async actor => {

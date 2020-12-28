@@ -1,20 +1,23 @@
 import {IRONSWORN} from "./config.js";
 
 export class IronswornDice {
-    constructor(data, formula) {
+    constructor(actor, formula) {
         this.formula = formula;
-        this.data = data;
-        this._roll = new Roll(formula, data);
+        this.actor = actor
+        this.data = actor.data?.data;
+        this.ignoreMomentum = false;
+        this._roll = new Roll(formula, this.data);
     }
 
-    static progressRoll(data, actionValue) {
-        const roll = new IronswornDice(data, `{1d10,1d10}`);
-        roll.actionValue = actionValue
-        return roll
+    static progressRoll(actor, actionValue) {
+        const roll = new IronswornDice(actor, `{1d10,1d10}`);
+        roll.actionValue = actionValue;
+        roll.ignoreMomentum = true;
+        return roll;
     }
 
-    static moveRoll(data, bonusExpr) {
-        return new IronswornDice(data, `{1d6+${bonusExpr},1d10,1d10}`)
+    static moveRoll(actor, bonusExpr) {
+        return new IronswornDice(actor, `{1d6+${bonusExpr},1d10,1d10}`)
     }
 
     set flavor(flavor) {
@@ -38,8 +41,16 @@ export class IronswornDice {
         return this._roll.terms[0].rolls.filter(r => r.dice[0].faces === 10);
     }
 
+    get isNegativeMomentumEffect() {
+        return !this.ignoreMomentum && this.actor.momentum < 0 && this.actionDie.terms[0].total === Math.abs(this.actor.momentum);
+    }
+
     get hit() {
-        const actionValue = this.actionValue || this.actionDie.total;
+        let actionValue = this.actionValue || this.actionDie.total;
+        if (this.isNegativeMomentumEffect) {
+            const diceResult = this.actionDie.terms[0].results[0].result;
+            actionValue -= diceResult;
+        }
         const [challenge1, challenge2] = this.challengeDice.map(x => x.total);
         const match = challenge1 === challenge2;
         if (actionValue <= Math.min(challenge1, challenge2)) {
@@ -61,11 +72,12 @@ export class IronswornDice {
             d.constructor.name.toLowerCase(),
             'd' + d.faces,
             d.total === 1 ? 'min' : null,
-            d.total === maxRoll ? 'max' : null
+            d.total === maxRoll ? 'max' : null,
+            (maxRoll === 6 && this.isNegativeMomentumEffect) ? 'strike' : null,
         ].filter(x => x).join(' ')
         return {
             cls: classes,
-            total: roll.total,
+            total: (maxRoll === 6 && this.isNegativeMomentumEffect) ? `${roll.total - d.total} !!` : roll.total,
             die: d.total,
             text: roll.terms.slice(1).join('')
         }
@@ -131,7 +143,7 @@ export class IronswornDice {
                 if (experienceButton) {
                     buttons.push(experienceButton);
                 }
-                buttons.push(this.fulfillButton(actor,item))
+                buttons.push(this.fulfillButton(actor, item))
                 break;
         }
 
@@ -155,6 +167,7 @@ export class IronswornDice {
             }
         }
     }
+
     fulfillButton(actor, item) {
         return {
             title: game.i18n.localize('IRONSWORN.VOW.Complete'),

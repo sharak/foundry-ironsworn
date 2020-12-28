@@ -77,7 +77,7 @@ export class IronswornItemSheet extends ItemSheet {
             const el = ev.currentTarget
             const moveTitle = `${this.object.name} (${el.dataset.param})`
             const actor = this.object.actor || {}
-            return ironswornRollDialog(actor.data?.data, el.dataset.param, moveTitle)
+            return ironswornRollDialog(actor, el.dataset.param, moveTitle)
         })
 
         // Everything below here is only needed if the sheet is editable

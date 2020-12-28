@@ -91,7 +91,7 @@ export class IronswornActorSheet extends ActorSheet {
             const marks = parseInt(ev.currentTarget.dataset.marks);
             const item = this.actor.getOwnedItem(itemId);
             const actionValue = Math.floor(item.data.data.current / 4);
-            const roll = IronswornDice.progressRoll(this.actor.data?.data, actionValue);
+            const roll = IronswornDice.progressRoll(this.actor, actionValue);
             roll.flavor = item.name;
             roll.fulfill(this.actor, item);
         })
@@ -146,7 +146,7 @@ export class IronswornActorSheet extends ActorSheet {
             const el = ev.currentTarget
             const moveTitle = `${item.name} (+${getAttributeNames(el.dataset.attr)})`
             const actor = this.actor || {}
-            return ironswornRollDialog(actor.data?.data, el.dataset.attr, moveTitle)
+            return ironswornRollDialog(actor, el.dataset.attr, moveTitle)
         })
     }
 
@@ -157,7 +157,7 @@ export class IronswornActorSheet extends ActorSheet {
         const stat = el.dataset.stat;
         if (stat) {
             // Clicked a non-edit stat; trigger a roll
-            ironswornRollDialog(this.actor.data.data, stat, `${game.i18n.localize('IRONSWORN.Roll')} +${getAttributeNames(stat)}`)
+            ironswornRollDialog(this.actor, stat, `${game.i18n.localize('IRONSWORN.Roll')} +${getAttributeNames(stat)}`)
         }
 
         const resource = el.dataset.resource

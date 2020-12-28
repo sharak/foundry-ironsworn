@@ -72,6 +72,14 @@
   font-size: 18px;
   font-weight: bold;
   text-align: center;
+  position: relative;
+}
+.chat-message .action-die .roll.strike:before,
+.chat-message .challenge-dice .roll.strike:before {
+  content: "|";
+  position: absolute;
+  transform: rotate(45deg);
+  left: 9px;
 }
 .chat-message .action-die .roll.d4,
 .chat-message .challenge-dice .roll.d4 {

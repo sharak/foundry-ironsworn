@@ -117,9 +117,9 @@ Handlebars.registerHelper('localizeDifficulty', function (value) {
 class IronswornRollDialog extends Dialog {
 }
 
-export async function ironswornRollDialog(data, stat, title) {
+export async function ironswornRollDialog(actor, stat, title) {
     const template = 'systems/ironsworn/templates/roll-dialog.hbs'
-    const templateData = {data, stat: getAttributeNames(stat)}
+    const templateData = {data: actor.data?.data, stat: getAttributeNames(stat)}
     const html = await renderTemplate(template, templateData)
     let d = new IronswornRollDialog({
         title: title || `${game.i18n.localize('IRONSWORN.Roll')} +${getAttributeNames(stat)}`,
@@ -131,7 +131,7 @@ export async function ironswornRollDialog(data, stat, title) {
                 callback: x => {
                     const form = x[0].querySelector('form')
                     const bonus = parseInt(form[0].value, 10)
-                    const roll = IronswornDice.moveRoll(data,`@${stat}+${bonus || 0}`)
+                    const roll = IronswornDice.moveRoll(actor,`@${stat}+${bonus || 0}`)
                     roll.flavor = title;
                     roll.roll();
 

@@ -44,6 +44,16 @@
       font-size: 18px;
       font-weight: bold;
       text-align: center;
+      position: relative;
+
+      &.strike {
+        &:before {
+          content: "|";
+          position: absolute;
+          transform: rotate(45deg);
+          left: 9px;
+        }
+      }
     }
 
     .roll.d4 {

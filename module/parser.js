@@ -13,7 +13,7 @@ export class IronswornParser {
             const speaker = ChatMessage.getSpeaker();
             const actor = ChatMessage.getSpeakerActor(speaker);
             if (actor) {
-                ironswornRollDialog(actor.data?.data, options.attr, actor.data?.data.options.title)
+                ironswornRollDialog(actor, options.attr, actor.data?.data.options.title)
             }
 
         });
