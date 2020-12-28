@@ -26,6 +26,13 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/texturina/v2/c4mM1nxpEtL3pXiAulRTkY-HGmNEX1b9NspjMwhAgliHhVrXy2dGHfUg.ttf) format('truetype');
 }
+@font-face {
+  font-family: 'Texturina';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/texturina/v2/c4mM1nxpEtL3pXiAulRTkY-HGmNEX1b9NspjMwhAgliHhVrXy2d_HfUg.ttf) format('truetype');
+}
 .chat-message .hit-type-complication {
   color: crimson;
 }
@@ -130,6 +137,7 @@
 }
 .ironsworn .sheet-area {
   margin-top: 0.5rem;
+  margin-bottom: 3rem;
 }
 .ironsworn .sheet-area h1,
 .ironsworn .sheet-area h2,
@@ -138,9 +146,14 @@
 }
 .ironsworn .sheet-area h1 {
   text-align: right;
-  font-weight: 500;
   border-bottom: 2px solid #CCCCCC;
   margin-bottom: 1rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.ironsworn .sheet-area h1::first-letter {
+  font-size: 1.5rem;
 }
 .ironsworn .sheet-area.debilities .checkbox {
   display: block;
@@ -154,6 +167,7 @@
   flex: 0 0;
 }
 .ironsworn.sheet .sheet-progress-input {
+  flex-grow: 0;
   min-width: 40px;
   width: 40px;
   height: 40px;
@@ -281,6 +295,20 @@
 }
 .ironsworn h4 {
   font-size: 22px;
+}
+.ironsworn .bonds {
+  margin: 1rem 0;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-grow: 0;
+}
+.ironsworn .bonds a {
+  text-align: right;
+  font-family: 'Texturina', sans-serif;
+  font-weight: 700;
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
 }
 .ironsworn .move-list {
   overflow-y: scroll;

@@ -11,18 +11,19 @@
             <nav class="sheet-tabs tabs" data-group="primary">
                 <a class="item" data-tab="progress">{{ localize 'TABS.Progress' }}</a>
                 <a class="item" data-tab="bonds">{{ localize 'TABS.Bonds' }}</a>
-                <a class="item" data-tab="vows">{{ localize 'TABS.vows' }}</a>
+                <a class="item" data-tab="vows">{{ localize 'TABS.Vows' }}</a>
             </nav>
             <div class="sheet-main">
                 <div class="tab progress" data-group="primary" data-tab="progress">
-                    {{> "systems/ironsworn/templates/actor/parts/progress.hbs" }}
+                    {{> "systems/ironsworn/templates/actor/parts/progress-block.hbs" items=journeys title=(localize 'IRONSWORN.Journeys') type='journey' }}
+                    {{> "systems/ironsworn/templates/actor/parts/progress-block.hbs" items=combats title=(localize 'IRONSWORN.Combats') type='combat' }}
                 </div>
 
                 <div class="tab bonds" data-group="primary" data-tab="bonds">
                     {{> "systems/ironsworn/templates/actor/parts/assets.hbs" }}
                 </div>
                 <div class="tab vows" data-group="primary" data-tab="vows">
-                    {{> "systems/ironsworn/templates/actor/parts/moves.hbs" }}
+                    {{> "systems/ironsworn/templates/actor/parts/progress-block.hbs" items=vows title=(localize 'IRONSWORN.Vows') type='vow' }}
                 </div>
             </div>
         </div>

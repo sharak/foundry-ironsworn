@@ -23,6 +23,7 @@
         "current": 0,
         "spent": 0
       },
+      "bonds": 0,
       "momentum": 2,
       "debility": {
         "corrupted": false,
@@ -50,7 +51,6 @@
     ],
     "templates": {
       "progress": {
-        "difficulties": {},
         "level": 4,
         "current": 0,
         "completed": false

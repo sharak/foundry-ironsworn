@@ -33,3 +33,14 @@
         </p>
     </div>
 </div>
+<div class="flexrow bonds">
+    <a class="mark-bond">{{ localize 'IRONSWORN.Bonds' }}</a>
+    {{#rangeProgress from=1 to=10 marks=data.bonds}}
+        <div class="sheet-progress-input {{cls}}">
+            <span class="mark">|</span>
+            <span class="mark">|</span>
+            <span class="mark">|</span>
+            <span class="mark">|</span>
+        </div>
+    {{/rangeProgress}}
+</div>

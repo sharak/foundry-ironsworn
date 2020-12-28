@@ -170,12 +170,15 @@ export class IronswornActorSheet extends ActorSheet {
 
         const resource = el.dataset.resource
         if (resource) {
-            // Clicked a value in momentum/health/etc, set the value
-            const newValue = parseInt(el.dataset.value)
-            const {momentumMax} = this.actor.data.data
-            if (newValue <= momentumMax) {
-                await this.actor.update({data: {[resource]: newValue}})
+            let newValue = parseInt(el.dataset.value)
+            if (resource === 'momentum') {
+               newValue = Math.min(newValue, this.actor.data.data.momentumMax);
             }
+            if (resource === 'supply') {
+                Hooks.call('statSupplyUpdated', newValue);
+            }
+
+            await this.actor.update({data: {[resource]: newValue}})
         }
 
         const tableName = el.dataset.table

@@ -12,6 +12,7 @@
   "TABS.Summary": "Summary",
   "TABS.Assets": "Assets",
 
+  "IRONSWORN.Bonds": "Bonds",
   "IRONSWORN.Debilities": "Debilities",
   "IRONSWORN.Conditions": "Conditions",
   "IRONSWORN.Wounded": "Wounded",
@@ -41,6 +42,8 @@
   "IRONSWORN.StrongHit": "Strong Hit",
   "IRONSWORN.MoveTypes": "Move Types",
   "IRONSWORN.Vows": "Vows",
+  "IRONSWORN.Journeys": "Journeys",
+  "IRONSWORN.Combats": "Combats",
   "IRONSWORN.Mark": "Mark",
   "IRONSWORN.Fulfill": "Fulfill",
   "IRONSWORN.AddVow": "Add vow",

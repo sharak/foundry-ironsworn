@@ -12,6 +12,7 @@
   "TABS.Summary": "Summary",
   "TABS.Assets": "Recursos",
 
+  "IRONSWORN.Bonds": "Vínculos",
   "IRONSWORN.Debilities": "Debilidades",
   "IRONSWORN.Conditions": "Condiciones",
   "IRONSWORN.Wounded": "Herido",
@@ -41,6 +42,8 @@
   "IRONSWORN.StrongHit": "Éxito total",
   "IRONSWORN.MoveTypes": "Tipos de Movimientos",
   "IRONSWORN.Vows": "Juramentos",
+  "IRONSWORN.Journeys": "Viajes",
+  "IRONSWORN.Combats": "Combates",
   "IRONSWORN.Mark": "Marca",
   "IRONSWORN.Fulfill": "Fulfill",
   "IRONSWORN.AddVow": "Añadir juramento",

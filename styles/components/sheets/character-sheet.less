@@ -1,14 +1,17 @@
 .ironsworn {
-  .item-controls{
+  .item-controls {
     flex: 0;
     padding-right: 20px;
   }
+
   .sheet-main {
     margin-bottom: 1rem;
     flex-grow: 0;
   }
+
   .sheet-area {
     margin-top: .5rem;
+    margin-bottom: 3rem;
 
     h1,
     h2,
@@ -18,10 +21,16 @@
 
     h1 {
       text-align: right;
-      font-weight: 500;
       border-bottom: 2px solid #CCCCCC;
       margin-bottom: 1rem;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      &::first-letter {
+        font-size: 1.5rem;
+      }
     }
+
     &.debilities {
       .checkbox {
         display: block;
@@ -44,6 +53,7 @@
       }
 
       &-input {
+        flex-grow: 0;
         min-width: 40px;
         width: 40px;
         height: 40px;
@@ -215,6 +225,21 @@
     font-size: 22px;
   }
 
+  .bonds {
+    margin: 1rem 0;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-grow: 0;
+    a {
+      text-align: right;
+      font-family: 'Texturina', sans-serif;
+      font-weight: 700;
+      margin-right: .5rem;
+      font-size: 1.2rem;
+
+    }
+  }
   .move-list {
     overflow-y: scroll;
     max-height: 400px;

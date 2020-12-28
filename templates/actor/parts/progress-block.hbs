@@ -1,0 +1,14 @@
+<section class="sheet-area">
+    <h1>{{ title }}&nbsp;&nbsp;<a class="add-item" data-type="{{ type }}"><i class="fas fa-plus"></i></a></h1>
+    {{#each items}}
+        <h3 class="sheet-progress-title item flexrow" data-item-id="{{ _id }}">
+            <a class="item-edit">{{ name }} ({{ localizeDifficulty data.level }})</a>
+            <div class="item-controls">
+                <a class="item-delete" title="{{ localize 'IRONSWORN.DeleteItem'}}"><i class="fas fa-trash"></i></a>
+            </div>
+        </h3>
+        <div class="flexrow sheet-progress">
+            {{> "systems/ironsworn/templates/actor/parts/progress-track.hbs" item=this from=1 to=10}}
+        </div>
+    {{/each}}
+</section>
