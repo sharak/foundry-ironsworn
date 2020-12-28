@@ -47,6 +47,7 @@ export class IronswornItemSheet extends ItemSheet {
             }
             data.difficulties[key] = value
         }
+
         return data
     }
 
