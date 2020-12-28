@@ -1,0 +1,33 @@
+<section class="sheet-area debilities">
+    <h1>{{ localize 'IRONSWORN.Debilities' }}</h1>
+
+    {{#*inline "debility"}}
+        <label class="checkbox">
+            <input type="checkbox" name="data.debility.{{name}}"
+                {{checked (lookup data.debility name)}}>
+            {{capitalize name}}
+        </label>
+    {{/inline}}
+
+    <div class="flexrow">
+        <div class="flexcol" style="flex: 0 0 50%">
+            <h3>{{ localize 'IRONSWORN.Conditions' }}</h3>
+            <div style="column-count: 2">
+                {{>debility name="wounded"}}
+                {{>debility name="unprepared"}}
+                {{>debility name="shaken"}}
+                {{>debility name="encumbered"}}
+            </div>
+        </div>
+        <div style="flex: 0 0 25%">
+            <h3>{{ localize 'IRONSWORN.Burdens' }}</h3>
+            {{>debility name="cursed"}}
+            {{>debility name="tormented"}}
+        </div>
+        <div style="flex: 0 0 25%">
+            <h3>{{ localize 'IRONSWORN.Banes' }}</h3>
+            {{>debility name="maimed"}}
+            {{>debility name="corrupted"}}
+        </div>
+    </div>
+</section>

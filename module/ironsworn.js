@@ -185,7 +185,8 @@ Handlebars.registerHelper('rangeEach', function (context, options) {
 
 Handlebars.registerHelper('capitalize', txt => {
     const [first, ...rest] = txt
-    return `${first.toUpperCase()}${rest.join('')}`
+    const capitalized = `${first.toUpperCase()}${rest.join('')}`;
+    return game.i18n.localize(`IRONSWORN.${capitalized}`);
 })
 
 Handlebars.registerHelper('targetAbilityDescription', (key) => {

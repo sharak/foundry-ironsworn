@@ -116,6 +116,10 @@
   flex: 0;
   padding-right: 20px;
 }
+.ironsworn .sheet-main {
+  margin-bottom: 1rem;
+  flex-grow: 0;
+}
 .ironsworn .sheet-area {
   margin-top: 0.5rem;
 }
@@ -129,6 +133,9 @@
   font-weight: 500;
   border-bottom: 2px solid #CCCCCC;
   margin-bottom: 1rem;
+}
+.ironsworn .sheet-area.debilities .checkbox {
+  display: block;
 }
 .ironsworn.sheet .sheet-progress {
   border-bottom: 1px solid #CCCCCC;
