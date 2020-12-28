@@ -4,9 +4,11 @@ export const preloadTemplates = async function() {
         'systems/ironsworn/templates/actor/parts/main-stats.hbs',
         'systems/ironsworn/templates/actor/parts/summary.hbs',
         'systems/ironsworn/templates/actor/parts/moves.hbs',
+        'systems/ironsworn/templates/actor/parts/progress.hbs',
         'systems/ironsworn/templates/actor/parts/oracles.hbs',
         'systems/ironsworn/templates/actor/parts/debilities.hbs',
         'systems/ironsworn/templates/actor/parts/progress-track.hbs',
+        'systems/ironsworn/templates/actor/parts/stacked-stat.hbs',
     ];
 
     return loadTemplates(templates);

@@ -1,6 +1,9 @@
 export const IRONSWORN = {};
 
-
+IRONSWORN.progressTypes = {
+    'journey': 'PROGRESS_TYPE.Journey',
+    'combat': 'PROGRESS_TYPE.Combat',
+}
 IRONSWORN.difficulties = {
     '12': 'DIFFICULTY.Troublesome',
     '8': 'DIFFICULTY.Dangerous',

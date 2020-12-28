@@ -4,7 +4,13 @@
       "character",
       "shared"
     ],
+    "templates": {
+      "common": {
+        "supply": 5
+      }
+    },
     "character": {
+      "templates": ["common"],
       "biography": "",
       "edge": 1,
       "heart": 1,
@@ -13,7 +19,6 @@
       "wits": 1,
       "health": 5,
       "spirit": 5,
-      "supply": 5,
       "experience": {
         "current": 0,
         "spent": 0
@@ -30,7 +35,9 @@
         "wounded": false
       }
     },
-    "shared": {}
+    "shared": {
+      "templates": ["common"]
+    }
   },
   "Item": {
     "types": [
@@ -52,7 +59,8 @@
     "progress": {
       "templates": [
         "progress"
-      ]
+      ],
+      "progress_type": ""
     },
     "vow": {
       "templates": [

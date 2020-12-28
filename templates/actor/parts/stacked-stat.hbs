@@ -1,0 +1,6 @@
+{{#rangeEach from=from to=to current=(lookup data stat)}}
+    <div class="clickable block stack-row {{stat}} {{#if isCurrent}} selected {{/if}}" data-resource="{{stat}}"
+         data-value="{{value}}">
+        {{valueStr}}
+    </div>
+{{/rangeEach}}

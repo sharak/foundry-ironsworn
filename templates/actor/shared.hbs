@@ -1,0 +1,37 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+    <!-- Header row -->
+    <header class="sheet-header">
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="50" width="50"/>
+        <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+    </header>
+
+
+    <div class="flexrow">
+        <div class="flexcol">
+            <nav class="sheet-tabs tabs" data-group="primary">
+                <a class="item" data-tab="progress">{{ localize 'TABS.Progress' }}</a>
+                <a class="item" data-tab="bonds">{{ localize 'TABS.Bonds' }}</a>
+                <a class="item" data-tab="vows">{{ localize 'TABS.vows' }}</a>
+            </nav>
+            <div class="sheet-main">
+                <div class="tab progress" data-group="primary" data-tab="progress">
+                    {{> "systems/ironsworn/templates/actor/parts/progress.hbs" }}
+                </div>
+
+                <div class="tab bonds" data-group="primary" data-tab="bonds">
+                    {{> "systems/ironsworn/templates/actor/parts/assets.hbs" }}
+                </div>
+                <div class="tab vows" data-group="primary" data-tab="vows">
+                    {{> "systems/ironsworn/templates/actor/parts/moves.hbs" }}
+                </div>
+            </div>
+        </div>
+        <div class="flexcol margin-right">
+            <div class="flexcol stack supply">
+                <h4 class="vertical clickable text" data-stat="supply">{{ localize 'STAT.Supply' }}</h4>
+                {{>"systems/ironsworn/templates/actor/parts/stacked-stat.hbs" data=data stat="supply" from=5 to=0}}
+            </div>
+        </div>
+    </div>
+</form>
+{{json data}}

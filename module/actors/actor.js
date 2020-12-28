@@ -34,12 +34,14 @@ export class IronswornActor extends Actor {
 
     /** @override */
     prepareDerivedData() {
-        // Calculate momentum max/reset from debilities
-        const numDebilitiesMarked = Object.values(this.data.data.debility).filter(
-            x => x
-        ).length
-        this.data.data.momentumMax = 10 - numDebilitiesMarked
-        this.data.data.momentumReset = Math.max(0, 2 - numDebilitiesMarked)
+        if (this.data.type === 'character') {
+            // Calculate momentum max/reset from debilities
+            const numDebilitiesMarked = Object.values(this.data.data.debility).filter(
+                x => x
+            ).length
+            this.data.data.momentumMax = 10 - numDebilitiesMarked
+            this.data.data.momentumReset = Math.max(0, 2 - numDebilitiesMarked)
+        }
     }
 
     async addDefaultMoves() {
@@ -55,6 +57,22 @@ export class IronswornActor extends Actor {
         const data = {
             name: game.i18n.localize('IRONSWORN.NewVow'),
             type: "vow",
+        }
+        return await this.createOwnedItem(data, {renderSheet: true});
+    }
+    async createEmptyJourney(ev) {
+        return await this.createEmptyProgress('journey');
+    }
+    async createEmptyCombat(ev) {
+        return await this.createEmptyProgress('combat');
+    }
+    async createEmptyProgress(type) {
+        const data = {
+            name: game.i18n.localize('IRONSWORN.NewProgress'),
+            type: "progress",
+            data: {
+                progress_type: type
+            }
         }
         return await this.createOwnedItem(data, {renderSheet: true});
     }

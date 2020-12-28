@@ -38,6 +38,8 @@ export class IronswornActorSheet extends ActorSheet {
         const data = super.getData()
 
         data.vows = data.items.filter(item => item.type === 'vow' && !item.data?.completed);
+        data.journeys = data.items.filter(item => item.type === 'progress' && !item.data?.completed && item.data?.progress_type === 'journey');
+        data.combats = data.items.filter(item => item.type === 'progress' && !item.data?.completed && item.data?.progress_type === 'combat');
         data.assets = data.items.filter(item => item.type === 'asset');
 
         let movesForDisplay = {}
@@ -84,7 +86,7 @@ export class IronswornActorSheet extends ActorSheet {
             const marks = parseInt(ev.currentTarget.dataset.marks);
             const item = this.actor.getOwnedItem(itemId);
             const currentMarks = item.data.data.current;
-            item.update({'data.current': currentMarks+marks});
+            item.update({'data.current': currentMarks + marks});
         })
         html.find('.fulfill-progress').click(ev => {
             const itemId = ev.currentTarget.dataset.id;
@@ -99,6 +101,12 @@ export class IronswornActorSheet extends ActorSheet {
             switch (ev.currentTarget.dataset.type) {
                 case 'vow':
                     this.actor.createEmptyVow(ev);
+                    break;
+                case 'journey':
+                    this.actor.createEmptyJourney(ev);
+                    break;
+                case 'combat':
+                    this.actor.createEmptyCombat(ev);
                     break;
             }
         })
@@ -221,35 +229,37 @@ export class IronswornActorSheet extends ActorSheet {
 
     async _onDropItem(event, data) {
         const item = game.items.get(data.id);
-        const isActorItem = this.actor.items.find(i => i.name === item.name);
-        if (!isActorItem) {
-            const actorAssets = this.actor.items.filter(i => i.type === 'asset');
+        if (item.type === 'asset') {
+            const isActorItem = this.actor.items.find(i => i.name === item.name);
+            if (!isActorItem) {
+                const actorAssets = this.actor.items.filter(i => i.type === 'asset');
 
-            if (actorAssets.length >= 3) {
-                const dialog = new Dialog({
-                    title: game.i18n.localize('IRONSWORN.SpentExperienceDialogTitle'),
-                    content: game.i18n.localize('IRONSWORN.SpentNewExperienceDialogContent'),
-                    buttons: {
-                        spent: {
-                            label: game.i18n.format('IRONSWORN.SpentExperienceButton', {experience: 3}),
-                            callback: async () => {
-                                if (this.actor.availableExperience >= 3) {
-                                    debugger;
-                                    await this.actor.spentExperience(3);
-                                    return super._onDropItem(event, data);
-                                } else {
-                                    ui.notifications.warn(game.i18n.localize('IRONSWORN.NotEnoughExperience'))
+                if (actorAssets.length >= 3) {
+                    const dialog = new Dialog({
+                        title: game.i18n.localize('IRONSWORN.SpentExperienceDialogTitle'),
+                        content: game.i18n.localize('IRONSWORN.SpentNewExperienceDialogContent'),
+                        buttons: {
+                            spent: {
+                                label: game.i18n.format('IRONSWORN.SpentExperienceButton', {experience: 3}),
+                                callback: async () => {
+                                    if (this.actor.availableExperience >= 3) {
+                                        debugger;
+                                        await this.actor.spentExperience(3);
+                                        return super._onDropItem(event, data);
+                                    } else {
+                                        ui.notifications.warn(game.i18n.localize('IRONSWORN.NotEnoughExperience'))
+                                    }
                                 }
                             }
                         }
-                    }
-                })
-                dialog.render(true)
-            } else {
-                return super._onDropItem(event, data);
+                    })
+                    dialog.render(true);
+                }
             }
+            return false;
+
         }
-        return false;
+        return super._onDropItem(event, data);
     }
 }
 

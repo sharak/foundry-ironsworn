@@ -41,12 +41,8 @@ export class IronswornItemSheet extends ItemSheet {
         // for (let attr of Object.values(data.data.attributes)) {
         //   attr.isCheckbox = attr.dtype === 'Boolean'
         // }
-        data.difficulties = {}
-        for (let [key, value] of Object.entries(IRONSWORN.difficulties)) {
-            if (!data.difficulties[key]) {
-            }
-            data.difficulties[key] = value
-        }
+        data.difficulties = IRONSWORN.difficulties;
+        data.progressTypes = IRONSWORN.progressTypes;
 
         return data
     }
