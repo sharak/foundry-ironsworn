@@ -1,15 +1,3 @@
-{{#*inline "progress"}}
-    <button type="button" class="mark-progress" data-id="{{vow._id}}" data-marks="{{ vow.data.level }}">{{ localize 'IRONSWORN.Mark' }}</button>
-    {{#rangeProgress from=from to=to marks=vow.data.current}}
-        <div class="sheet-progress-input {{cls}}">
-            <span class="mark">|</span>
-            <span class="mark">|</span>
-            <span class="mark">|</span>
-            <span class="mark">|</span>
-        </div>
-    {{/rangeProgress}}
-    <button type="button" class="fulfill-progress" data-id="{{vow._id}}" data-marks="{{ vow.data.level }}">{{ localize 'IRONSWORN.Fulfill' }}</button>
-{{/inline}}
 <div class="flexrow">
 
     <div class="flexcol">
@@ -20,7 +8,7 @@
                     <a class="progress-fulfill">{{ vow.name }} ({{ localizeDifficulty vow.data.level }})</a>
                 </h3>
                 <div class="flexrow sheet-progress">
-                    {{>progress vow=vow from=1 to=10}}
+                    {{> "systems/ironsworn/templates/actor/parts/progress-track.hbs" item=vow from=1 to=10}}
                 </div>
             {{/each}}
             <button type="button" class="add-item" data-type="vow">{{ localize 'IRONSWORN.AddVow' }}</button>

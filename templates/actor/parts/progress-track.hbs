@@ -1,0 +1,10 @@
+<button type="button" class="mark-progress" data-id="{{item._id}}" data-marks="{{ item.data.level }}">{{ localize 'IRONSWORN.Mark' }}</button>
+{{#rangeProgress from=from to=to marks=item.data.current}}
+    <div class="sheet-progress-input {{cls}}">
+        <span class="mark">|</span>
+        <span class="mark">|</span>
+        <span class="mark">|</span>
+        <span class="mark">|</span>
+    </div>
+{{/rangeProgress}}
+<button type="button" class="fulfill-progress" data-id="{{item._id}}" data-marks="{{ item.data.level }}">{{ localize 'IRONSWORN.Fulfill' }}</button>
